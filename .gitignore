@@ -26,4 +26,4 @@ Android/IntranetEpitech/proguard/
 *.log
 
 # Submodules
-Android/Qinder/
+# Android/Qinder/
