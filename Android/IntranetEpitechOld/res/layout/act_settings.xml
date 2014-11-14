@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gris_clair"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:padding="20dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_epitech"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/main"
+            android:textIsSelectable="false" />
+
+        <EditText
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ems="10"
+            android:hint="@string/login" >
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mot_de_passe_unix"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/main"
+            android:textIsSelectable="false" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ems="10"
+            android:hint="@string/facultatif"
+            android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/logas_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/logas"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/main"
+            android:textIsSelectable="false" />
+
+        <EditText
+            android:id="@+id/logas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ems="10"
+            android:hint="@string/logas" >
+
+        </EditText>
+
+        <CheckBox
+            android:id="@+id/notif_messages"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notifications des messages" />
+
+        <CheckBox
+            android:id="@+id/notif_activities"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notifications des activitées" />
+
+        <TextView
+            android:id="@+id/settings_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text=""
+            android:textIsSelectable="false" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/save_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enregistrer" />
+
+            <Button
+                android:id="@+id/go_netsoul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/m_netsoul" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/dewep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="@string/signature"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/main"
+            android:textIsSelectable="true"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</ScrollView>

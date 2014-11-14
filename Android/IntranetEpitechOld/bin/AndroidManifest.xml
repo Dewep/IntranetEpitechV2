@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="net.dewep.intranetepitech"
+    android:versionCode="8"
+    android:versionName="1.4.3" >
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="20" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="net.dewep.intranetepitech.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="net.dewep.intranetepitech.Act_Main"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="net.dewep.intranetepitech.Act_Settings"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Préférences"
+            android:noHistory="true"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="net.dewep.intranetepitech.Act_Calendrier"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Mon planning"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="net.dewep.intranetepitech.Act_Messages"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Messages"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="net.dewep.intranetepitech.Act_Mes_Notes"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Mes notes"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="net.dewep.intranetepitech.Act_Notes"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Notes"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="net.dewep.intranetepitech.Act_A_Propos"
+            android:label="A propos" >
+        </activity>
+        <activity
+            android:name="net.dewep.intranetepitech.Act_Netsoul"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Netsoul"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="net.dewep.intranetepitech.Act_Mes_Projets"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Mes projets"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="net.dewep.intranetepitech.Act_Inscriptions"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Planning inscriptions"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="net.dewep.intranetepitech.Act_Susies"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Susies"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="net.dewep.intranetepitech.Act_Susie"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Susie"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <service android:name="net.dewep.intranetepitech.NotificationsService" />
+
+        <receiver android:name="net.dewep.intranetepitech.NotifMessagesReceiver" >
+        </receiver>
+
+        <meta-data android:name="com.google.android.gms.analytics.globalConfigResource"
+            android:resource="@xml/global_tracker" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+    </application>
+
+</manifest>

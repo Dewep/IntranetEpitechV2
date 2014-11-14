@@ -1,0 +1,3 @@
+[submodule "Android/Qinder"]
+	path = Android/Qinder
+	url = https://github.com/Dewep/Qinder.git
