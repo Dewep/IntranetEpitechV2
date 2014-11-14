@@ -24,3 +24,6 @@ Android/IntranetEpitech/proguard/
 
 # Log Files
 *.log
+
+# Submodules
+Android/Qinder/
