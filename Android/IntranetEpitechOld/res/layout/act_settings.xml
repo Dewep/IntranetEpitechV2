@@ -70,13 +70,15 @@
             android:id="@+id/notif_messages"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Notifications des messages" />
+            android:text="Notifications des messages"
+            android:visibility="gone" />
 
         <CheckBox
             android:id="@+id/notif_activities"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Notifications des activitées" />
+            android:text="Notifications des activitées"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/settings_info"

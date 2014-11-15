@@ -124,10 +124,10 @@ public class Act_Main extends MyActivity {
 				else if (map.get("titre").equals(getResources().getString(R.string.m_apropos)))
 				{
 					//AlarmReceiver.SetAlarm(context);
-					NotifMessagesReceiver.CancelAlarm(context);
+					//NotifMessagesReceiver.CancelAlarm(context);
 					//startService(new Intent(Act_Main.this, NotificationsService.class));
-					/*Intent intent = new Intent(Act_Main.this, Act_A_Propos.class);
-					startActivity(intent);*/
+					Intent intent = new Intent(Act_Main.this, Act_A_Propos.class);
+					startActivity(intent);
 				}
 				else if (map.get("titre").equals(getResources().getString(R.string.m_projets)))
 				{
