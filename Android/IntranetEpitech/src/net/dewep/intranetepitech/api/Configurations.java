@@ -10,6 +10,10 @@ public class Configurations {
 		return "intra.epitech.eu";
 	}
 
+	public static String getPathLogin() {
+		return "/";
+	}
+
 	public static String getPathDashboard() {
 		return "/";
 	}

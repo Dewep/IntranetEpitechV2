@@ -20,4 +20,12 @@ public abstract class RequestIntranet extends APIRequest {
 		if (with_json)
 			this.addGet("format", "json");
 	}
+
+	public void postExecute(APIResponse response) {
+		super.preExecute(response);
+		if (response.data != null && response.data.startsWith("//") && response.data.indexOf('\n') != -1)
+		{
+			response.data = response.data.substring(response.data.indexOf('\n') + 1);
+		}
+	}
 }

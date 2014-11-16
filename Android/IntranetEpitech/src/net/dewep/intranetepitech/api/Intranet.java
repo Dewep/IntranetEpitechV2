@@ -1,7 +1,7 @@
 package net.dewep.intranetepitech.api;
 
-import android.app.Activity;
 import fr.qinder.api.APICookie;
+import fr.qinder.api.APIRequest;
 import fr.qinder.api.APIRequestsListener;
 
 public class Intranet {
@@ -23,15 +23,11 @@ public class Intranet {
 		return Intranet.instance;
 	}
 
-	private APIRequestsListener createListener(Activity activity) {
-		return new APIRequestsListener(activity);
+	private APIRequestsListener createListener() {
+		return new APIRequestsListener(null);
 	}
 
-	public static APIRequestsListener prepare(Activity activity) {
-		return Intranet.getInstance().createListener(activity);
-	}
-
-	public static APIRequestsListener prepare() {
-		return Intranet.prepare(null);
+	public static APIRequestsListener request(APIRequest request) {
+		return Intranet.getInstance().createListener().request(request);
 	}
 }

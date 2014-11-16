@@ -15,11 +15,26 @@ public class ActivityMain extends Activity {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.activity_main);
 
-		Intranet.prepare(this).request(new RequestIntranet(Configurations.getPathDashboard()) {
+		Intranet.request(new RequestIntranet(Configurations.getPathDashboard()) {
 			@Override
 			public void onResult(APIResponse response) {
 				Log.d("URL", this.url);
-				Log.d("Result", response.data);
+				Log.d("Cache", String.valueOf(this.response.isCache));
+				Log.d("Result3", String.valueOf(response.code));
+			}
+		}).request(new RequestIntranet(Configurations.getPathDashboard()) {
+			@Override
+			public void onResult(APIResponse response) {
+				Log.d("URL2", this.url);
+				Log.d("Cache", String.valueOf(this.response.isCache));
+				Log.d("Result3", String.valueOf(response.code));
+			}
+		}).request(new RequestIntranet(Configurations.getPathDashboard()) {
+			@Override
+			public void onResult(APIResponse response) {
+				Log.d("URL3", this.url);
+				Log.d("Cache", String.valueOf(this.response.isCache));
+				Log.d("Result3", String.valueOf(response.code));
 			}
 		}).execute();
 	}
