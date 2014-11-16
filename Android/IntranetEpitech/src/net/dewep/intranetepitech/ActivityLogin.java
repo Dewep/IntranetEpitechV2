@@ -3,13 +3,12 @@ package net.dewep.intranetepitech;
 import net.dewep.intranetepitech.api.Configurations;
 import net.dewep.intranetepitech.api.Intranet;
 import net.dewep.intranetepitech.api.RequestIntranet;
-import fr.qinder.api.APIResponse;
 import fr.qinder.pref.Preferences;
 import fr.qinder.tools.JSON;
 import fr.qinder.Q;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -72,20 +71,32 @@ public class ActivityLogin extends Activity {
 		login_bloc_connect.setVisibility(View.VISIBLE);
 		Intranet.request(new RequestIntranet(Configurations.getPathLogin()) {
 			@Override
-			public void preExecute(APIResponse response) {
-				super.preExecute(response);
+			public void preExecute() {
+				super.preExecute();
 				addPost("login", Preferences.get("Account", "login", ""));
 				addPost("password", Preferences.get("Account", "password", ""));
 			}
 			@Override
-			public void onResult(APIResponse response) {
+			public void onResult() {
 				if (response.code == 403)
-					blocSettings(JSON.parse(response.data, "message", "Mauvais identifiants."));
+				{
+					blocSettings(JSON.parse(getJSON(), "message", "Mauvais identifiants."));
+				}
 				else if (response.code == 200)
-					blocSettings("Connexion réussie!");
+				{
+					Preferences.set("Account", "title", JSON.parse(getJSON(), "infos>title", Preferences.get("Account", "login", "")));
+					Preferences.set("Account", "lastname", JSON.parse(getJSON(), "infos>lastname", ""));
+					Preferences.set("Account", "firstname", JSON.parse(getJSON(), "infos>firstname", ""));
+					Preferences.set("Account", "location", JSON.parse(getJSON(), "infos>location", ""));
+					Preferences.set("Account", "promo", JSON.parse(getJSON(), "infos>firstname", 0));
+					Intent intent = new Intent(ActivityLogin.this, ActivityMain.class);
+					startActivity(intent);
+					finish();
+				}
 				else
+				{
 					blocSettings("Impossible d'accéder à l'Intranet.");
-				Log.d("Result", response.data);
+				}
 			}
 		}).execute();
 	}
