@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/landing_login_wrapper"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:orientation="vertical"
+        android:paddingBottom="25.0dp"
+        android:paddingLeft="50.0dp"
+        android:paddingRight="50.0dp"
+        android:paddingTop="25.0dp" >
+
+        <LinearLayout
+            android:id="@+id/focus_stealer"
+            android:layout_width="0.0px"
+            android:layout_height="0.0px"
+            android:focusable="true"
+            android:focusableInTouchMode="true" >
+
+            <requestFocus />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/login_login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:digits="abcdefghijklmnopqrstuvwxyz_-0123456789"
+            android:hint="@string/login_epitech"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textColorHint="@color/grey_dark"
+            android:textColorLink="@color/blue_light" />
+
+        <EditText
+            android:id="@+id/login_password"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password_epitech"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textColorHint="@color/grey_dark"
+            android:textColorLink="@color/blue_light" />
+
+        <Button
+            android:id="@+id/login_connect"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:paddingBottom="10.0dp"
+            android:paddingTop="10.0dp"
+            android:text="@string/connect"
+            android:textColor="@color/white"
+            android:textSize="16.0sp" />
+
+        <TextView
+            android:id="@+id/login_error"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10.0dp"
+            android:gravity="center_horizontal"
+            android:padding="10.0dp"
+            android:textColor="@color/error"
+            android:textSize="13.0dp" />
+    </LinearLayout>
+
+</ScrollView>

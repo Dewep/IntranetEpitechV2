@@ -18,11 +18,8 @@ import android.widget.TextView;
 
 public class ActivityLogin extends Activity {
 
-	//ImageView login_logo;
 	LinearLayout login_bloc_connect;
 	LinearLayout login_bloc_settings;
-	//ProgressBar login_loader;
-	//TextView login_status;
 	EditText login_login;
 	EditText login_password;
 	TextView login_error;
@@ -34,11 +31,8 @@ public class ActivityLogin extends Activity {
 		this.setContentView(R.layout.activity_login);
 		Q.init(this);
 
-		//login_logo = (ImageView) this.findViewById(R.id.login_logo);
 		login_bloc_connect = (LinearLayout) this.findViewById(R.id.login_bloc_connect);
 		login_bloc_settings = (LinearLayout) this.findViewById(R.id.login_bloc_settings);
-		//login_loader = (ProgressBar) this.findViewById(R.id.login_loader);
-		//login_status = (TextView) this.findViewById(R.id.login_status);
 		login_login = (EditText) this.findViewById(R.id.login_login);
 		login_password = (EditText) this.findViewById(R.id.login_password);
 		login_error = (TextView) this.findViewById(R.id.login_error);
@@ -59,9 +53,9 @@ public class ActivityLogin extends Activity {
 		String login = Preferences.get("Account", "login", null);
 		String password = Preferences.get("Account", "password", null);
 		if (login == null || login.length() < 2)
-			blocSettings(with_error ? "Merci de renseigner le login." : "");
+			blocSettings(with_error ? Q.getString(R.string.provide_login) : "");
 		else if (password == null || password.length() < 2)
-			blocSettings(with_error ? "Merci de renseigner le mot de passe." : "");
+			blocSettings(with_error ? Q.getString(R.string.provide_password) : "");
 		else
 			blocConnect();
 	}
@@ -80,7 +74,7 @@ public class ActivityLogin extends Activity {
 			public void onResult() {
 				if (response.code == 403)
 				{
-					blocSettings(JSON.parse(getJSON(), "message", "Mauvais identifiants."));
+					blocSettings(JSON.parse(getJSON(), "message", Q.getString(R.string.bad_identity)));
 				}
 				else if (response.code == 200)
 				{
@@ -95,7 +89,7 @@ public class ActivityLogin extends Activity {
 				}
 				else
 				{
-					blocSettings("Impossible d'accéder à l'Intranet.");
+					blocSettings(Q.getString(R.string.impossible_access_intranet));
 				}
 			}
 		}).execute();

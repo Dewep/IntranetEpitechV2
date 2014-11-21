@@ -10,7 +10,7 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
-    <color name="error">#dd9473</color>
+    <color name="error">#ce291d</color>
 
     <color name="blue_light">#2ebdf2</color>
     <color name="blue">#015ca3</color>

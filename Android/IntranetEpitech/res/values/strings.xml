@@ -10,9 +10,15 @@
     <!-- Pages -->
     <string name="page_login">Connexion</string>
 
-    <!-- Login -->
+    <!-- Landing -->
+    <string name="landing_connection">Connexion</string>
+    <string name="landing_about">À propos</string>
     <string name="login_epitech">Login Epitech</string>
     <string name="password_epitech">Mot de passe UNIX</string>
     <string name="progress_connect">Connexion à l\'Intranet Epitech</string>
+    <string name="provide_login">Merci de renseigner le login.</string>
+    <string name="provide_password">Merci de renseigner le mot de passe.</string>
+    <string name="bad_identity">Mauvais identifiants.</string>
+    <string name="impossible_access_intranet">Impossible d\'accéder à l\'Intranet.</string>
 
 </resources>
