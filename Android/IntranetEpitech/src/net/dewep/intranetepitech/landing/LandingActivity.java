@@ -8,9 +8,7 @@ import net.dewep.intranetepitech.ActivityMain;
 import net.dewep.intranetepitech.EpitechAccount;
 import net.dewep.intranetepitech.R;
 import net.dewep.intranetepitech.animation.DepthPageTransformer;
-import net.dewep.intranetepitech.api.Configurations;
-import net.dewep.intranetepitech.api.Intranet;
-import net.dewep.intranetepitech.api.RequestIntranet;
+import net.dewep.intranetepitech.api.request.LoginAPI;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -151,8 +149,8 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
 	}
 
 	public void testConnection(boolean isStrict) {
-		final String login = EpitechAccount.getLogin();
-		final String password = EpitechAccount.getPassword();
+		String login = EpitechAccount.getLogin();
+		String password = EpitechAccount.getPassword();
 		if (login == "" || login.length() < 2) {
 			this.setMessageConnectError(Q.getString(R.string.landing_provide_login));
 			this.setConnectionError(isStrict);
@@ -162,34 +160,30 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
 		} else {
 			this.setMessageConnectError(null);
 			this.setConnectionInProgress();
-			Intranet.request(new RequestIntranet(Configurations.getPathLogin()) {
+			new LoginAPI(login, password) {
 				@Override
-				public void preExecute() {
-					super.preExecute();
-					addPost("login", login);
-					addPost("password", password);
+				public void onSuccess() {
+					EpitechAccount.setTitle(JSON.parse(getJSON(), "infos>title", EpitechAccount.getLogin()));
+					EpitechAccount.setLastname(JSON.parse(getJSON(), "infos>lastname", ""));
+					EpitechAccount.setFirstname(JSON.parse(getJSON(), "infos>firstname", ""));
+					EpitechAccount.setLocation(JSON.parse(getJSON(), "infos>location", ""));
+					EpitechAccount.setPromo(JSON.parse(getJSON(), "infos>firstname", 0));
+					Intent intent = new Intent(LandingActivity.this, ActivityMain.class);
+					startActivity(intent);
+					finish();
 				}
 
 				@Override
-				public void onResult() {
+				public void onError() {
 					if (response.code == 403) {
 						setMessageConnectError(Q.getString(R.string.landing_bad_identity));
 						setConnectionError();
-					} else if (response.code == 200) {
-						EpitechAccount.setTitle(JSON.parse(getJSON(), "infos>title", EpitechAccount.getLogin()));
-						EpitechAccount.setLastname(JSON.parse(getJSON(), "infos>lastname", ""));
-						EpitechAccount.setFirstname( JSON.parse(getJSON(), "infos>firstname", ""));
-						EpitechAccount.setLocation(JSON.parse(getJSON(), "infos>location", ""));
-						EpitechAccount.setPromo(JSON.parse(getJSON(), "infos>firstname", 0));
-						Intent intent = new Intent(LandingActivity.this, ActivityMain.class);
-						startActivity(intent);
-						finish();
 					} else {
 						setMessageConnectError(Q.getString(R.string.landing_connection_impossible));
 						setConnectionError();
 					}
 				}
-			}).execute();
+			};
 		}
 	}
 

@@ -48,9 +48,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="10.0dp"
             android:paddingTop="10.0dp"
-            android:text="@string/landing_login_connect"
-            android:textColor="@color/white"
-            android:textSize="16.0sp" />
+            android:text="@string/landing_login_connect" />
 
         <TextView
             android:id="@+id/landing_login_error"
@@ -60,8 +58,8 @@
             android:layout_marginTop="10.0dp"
             android:gravity="center_horizontal"
             android:padding="10.0dp"
-            android:textColor="@color/error"
-            android:textSize="13.0dp" />
+            android:textColor="@color/error" />
+
     </LinearLayout>
 
 </ScrollView>

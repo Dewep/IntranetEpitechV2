@@ -24,15 +24,30 @@ public abstract class RequestIntranet extends APIRequest {
 
 	public void preExecute() {
 		super.preExecute();
-		if (with_json)
+		if (with_json) {
 			this.addGet("format", "json");
+		}
 	}
 
 	public void postExecute() {
 		super.preExecute();
-		if (response.data != null && response.data.startsWith("//") && response.data.indexOf('\n') != -1)
+		if (response.data != null && response.data.startsWith("//") && response.data.indexOf('\n') != -1) {
 			response.data = response.data.substring(response.data.indexOf('\n') + 1);
-		if (with_json)
+		}
+		if (with_json) {
 			json = JSON.getObject(response.data);
+		}
 	}
+
+	@Override
+	public void onResult() {
+		if (response.code == 200) {
+			onSuccess();
+		} else {
+			onError();
+		}
+	}
+
+	public abstract void onSuccess();
+	public abstract void onError();
 }

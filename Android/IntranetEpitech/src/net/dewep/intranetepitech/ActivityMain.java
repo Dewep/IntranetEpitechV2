@@ -1,12 +1,11 @@
 package net.dewep.intranetepitech;
 
-import fr.qinder.pref.Preferences;
-import net.dewep.intranetepitech.api.Configurations;
-import net.dewep.intranetepitech.api.Intranet;
-import net.dewep.intranetepitech.api.RequestIntranet;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 public class ActivityMain extends Activity {
 
@@ -15,30 +14,17 @@ public class ActivityMain extends Activity {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.activity_main);
 
-		Intranet.request(new RequestIntranet(Configurations.getPathDashboard()) {
+		findViewById(R.id.main_logout).setOnClickListener(new OnClickListener() {
 			@Override
-			public void onResult() {
-				Log.d("URL", this.url);
-				Log.d("Cache", String.valueOf(this.response.isCache));
-				Log.d("Result3", String.valueOf(response.code));
+			public void onClick(View v) {
+				EpitechAccount.logout();
+				Intent intent = new Intent(ActivityMain.this, StartActivity.class);
+				startActivity(intent);
+				finish();
 			}
-		}).request(new RequestIntranet(Configurations.getPathDashboard()) {
-			@Override
-			public void onResult() {
-				Log.d("URL2", this.url);
-				Log.d("Cache", String.valueOf(this.response.isCache));
-				Log.d("Result3", String.valueOf(response.code));
-			}
-		}).request(new RequestIntranet(Configurations.getPathDashboard()) {
-			@Override
-			public void onResult() {
-				Log.d("URL3", this.url);
-				Log.d("Cache", String.valueOf(this.response.isCache));
-				Log.d("Result3", String.valueOf(response.code));
-			}
-		}).execute();
+		});
 
-		Log.d("AccountTitle", Preferences.get("Account", "title", ""));
+		Toast.makeText(this, "Title: " + EpitechAccount.getTitle(), Toast.LENGTH_SHORT).show();
 	}
 
 }
