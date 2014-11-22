@@ -14,7 +14,7 @@ public class IntranetAPI {
 
 	private IntranetAPI() {
 		api = new HashMap<String, APIRequestsListener>();
-		APICookie.add("https://intra.epitech.eu", "language", "fr");
+		APICookie.add(Configurations.getFullHost(), "language", "fr");
 	}
 
 	public final static IntranetAPI getInstance() {

@@ -1,5 +1,7 @@
 package net.dewep.intranetepitech;
 
+import net.dewep.intranetepitech.api.Configurations;
+import fr.qinder.api.APICookie;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +20,7 @@ public class ActivityMain extends Activity {
 			@Override
 			public void onClick(View v) {
 				EpitechAccount.logout();
+				APICookie.remove(Configurations.getFullHost());
 				Intent intent = new Intent(ActivityMain.this, StartActivity.class);
 				startActivity(intent);
 				finish();
