@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        style="@style/TextAboutTitle"
+        android:text="@string/about_application" />
+
+    <TextView
+        style="@style/TextAboutContent"
+        android:text="@string/about_application_content" />
+
+    <TextView
+        style="@style/TextAboutTitle"
+        android:text="@string/about_authors" />
+
+    <TextView
+        style="@style/TextAboutContent"
+        android:text="@string/about_authors_content" />
+
+    <TextView
+        style="@style/TextAboutTitle"
+        android:text="@string/about_source" />
+
+    <TextView
+        style="@style/TextAboutContent"
+        android:text="@string/about_source_content" />
+
+</LinearLayout>

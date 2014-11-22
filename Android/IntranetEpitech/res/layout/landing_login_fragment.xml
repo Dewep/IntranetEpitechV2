@@ -27,7 +27,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:digits="abcdefghijklmnopqrstuvwxyz_-0123456789"
-            android:hint="@string/login_epitech"
+            android:hint="@string/landing_login_login_epitech"
             android:imeOptions="actionNext"
             android:singleLine="true"
             android:textColorLink="@color/blue_light" />
@@ -36,7 +36,7 @@
             android:id="@+id/landing_login_password"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/password_epitech"
+            android:hint="@string/landing_login_password_epitech"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
             android:singleLine="true"
@@ -46,10 +46,9 @@
             android:id="@+id/landing_login_connect"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/blue"
             android:paddingBottom="10.0dp"
             android:paddingTop="10.0dp"
-            android:text="@string/connect"
+            android:text="@string/landing_login_connect"
             android:textColor="@color/white"
             android:textSize="16.0sp" />
 

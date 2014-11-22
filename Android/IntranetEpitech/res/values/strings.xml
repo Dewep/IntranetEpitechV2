@@ -6,19 +6,30 @@
     <string name="connect">Connexion</string>
     <string name="epitech">Epitech</string>
     <string name="intranet_epitech">Intranet Epitech</string>
+    <string name="image">Image</string>
 
     <!-- Pages -->
     <string name="page_login">Connexion</string>
 
+    <!-- About -->
+    <string name="about_application">À propos de l\'application</string>
+    <string name="about_authors">Auteurs de l\'application</string>
+    <string name="about_source">Source de l\'application</string>
+    <string name="about_application_content">Version : 2.0 (release 10)\nDate de mise à jour : 22/11/2014</string>
+    <string name="about_authors_content">Maigret Aurélien (maigre_a)\nhttp://www.dewep.net\n\nColin Julien (colin_g)\nhttps://github.com/Toldy</string>
+    <string name="about_source_content">GitHub : https://github.com/Dewep/IntranetEpitechV2</string>
+
     <!-- Landing -->
     <string name="landing_connection">Connexion</string>
     <string name="landing_about">À propos</string>
-    <string name="login_epitech">Login Epitech</string>
-    <string name="password_epitech">Mot de passe UNIX</string>
-    <string name="progress_connect">Connexion à l\'Intranet Epitech</string>
-    <string name="provide_login">Merci de renseigner le login.</string>
-    <string name="provide_password">Merci de renseigner le mot de passe.</string>
-    <string name="bad_identity">Mauvais identifiants.</string>
-    <string name="impossible_access_intranet">Impossible d\'accéder à l\'Intranet.</string>
+    <string name="landing_login_login_epitech">Login Epitech</string>
+    <string name="landing_login_password_epitech">Mot de passe UNIX</string>
+    <string name="landing_login_connect">Connexion</string>
+    <string name="landing_connection_in_progress">Connexion à l\'Intranet Epitech en cours &#8230;</string>
+    <string name="landing_connection_impossible">Impossible de se connecter à l\'Intranet Epitech</string>
+    <string name="landing_identity_required">Vous devez renseigner vos identifiants pour accéder à l\'Intranet Epitech</string>
+    <string name="landing_provide_login">Merci de renseigner le login.</string>
+    <string name="landing_provide_password">Merci de renseigner le mot de passe.</string>
+    <string name="landing_bad_identity">Mauvais identifiants.</string>
 
 </resources>

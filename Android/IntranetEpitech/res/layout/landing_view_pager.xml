@@ -32,7 +32,7 @@
                     android:layout_height="30.0dp"
                     android:layout_gravity="center"
                     android:adjustViewBounds="true"
-                    android:contentDescription="@string/epitech"
+                    android:contentDescription="@string/image"
                     android:scaleType="fitCenter"
                     android:src="@drawable/ic_logo_grey" />
             </LinearLayout>
@@ -50,6 +50,7 @@
                 android:id="@+id/landing_connection"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
+                android:background="@drawable/ic_actionbar_button_bg"
                 android:orientation="horizontal"
                 android:paddingLeft="10.0dp"
                 android:paddingRight="10.0dp" >
@@ -78,7 +79,7 @@
                     android:layout_width="20.0dp"
                     android:layout_height="20.0dp"
                     android:layout_gravity="center"
-                    android:contentDescription="@string/epitech"
+                    android:contentDescription="@string/image"
                     android:src="@drawable/ic_error"
                     android:visibility="gone" />
             </LinearLayout>
@@ -95,6 +96,7 @@
                 android:id="@+id/landing_about"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
+                android:background="@drawable/ic_actionbar_button_bg"
                 android:orientation="horizontal"
                 android:paddingLeft="10.0dp"
                 android:paddingRight="10.0dp" >

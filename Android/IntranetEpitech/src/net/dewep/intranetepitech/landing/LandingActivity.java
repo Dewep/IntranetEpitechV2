@@ -91,7 +91,7 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
 	}
 
 	private void setConnectionInProgress() {
-		this.setMessageState("Connexion a l'Intranet Epitech en cours ...");
+		this.setMessageState(Q.getString(R.string.landing_connection_in_progress));
 		mLandingConnectionError.setVisibility(View.GONE);
 		mLandingConnectionProgressbar.setVisibility(View.VISIBLE);
 		mPager.setCurrentItem(0, true);
@@ -103,13 +103,13 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
 
 	private void setConnectionError(boolean isStrict) {
 		if (isStrict) {
-			this.setMessageState("Impossible de se connecter a l'Intranet Epitech");
+			this.setMessageState(Q.getString(R.string.landing_connection_impossible));
 			mLandingConnectionError.setVisibility(View.VISIBLE);
 			mLandingConnectionProgressbar.setVisibility(View.GONE);
 			mPager.setCurrentItem(1, true);
 		} else {
 			this.setMessageConnectError(null);
-			this.setMessageState("Vous devez renseigner vos identifiants pour acceder a l'Intranet Epitech");
+			this.setMessageState(Q.getString(R.string.landing_identity_required));
 			mLandingConnectionError.setVisibility(View.GONE);
 			mLandingConnectionProgressbar.setVisibility(View.GONE);
 			mPager.setCurrentItem(0, true);
@@ -154,10 +154,10 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
 		final String login = EpitechAccount.getLogin();
 		final String password = EpitechAccount.getPassword();
 		if (login == "" || login.length() < 2) {
-			this.setMessageConnectError(Q.getString(R.string.provide_login));
+			this.setMessageConnectError(Q.getString(R.string.landing_provide_login));
 			this.setConnectionError(isStrict);
 		} else if (password == "" || password.length() < 2) {
-			this.setMessageConnectError(Q.getString(R.string.provide_password));
+			this.setMessageConnectError(Q.getString(R.string.landing_provide_password));
 			this.setConnectionError(isStrict);
 		} else {
 			this.setMessageConnectError(null);
@@ -173,7 +173,7 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
 				@Override
 				public void onResult() {
 					if (response.code == 403) {
-						setMessageConnectError(Q.getString(R.string.bad_identity));
+						setMessageConnectError(Q.getString(R.string.landing_bad_identity));
 						setConnectionError();
 					} else if (response.code == 200) {
 						EpitechAccount.setTitle(JSON.parse(getJSON(), "infos>title", EpitechAccount.getLogin()));
@@ -185,7 +185,7 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
 						startActivity(intent);
 						finish();
 					} else {
-						setMessageConnectError(Q.getString(R.string.impossible_access_intranet));
+						setMessageConnectError(Q.getString(R.string.landing_connection_impossible));
 						setConnectionError();
 					}
 				}
