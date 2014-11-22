@@ -24,11 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="net.dewep.intranetepitech.LandingActivity"
-            android:theme="@style/AppThemeNoBar" >
-        </activity>
-        <activity
-            android:name="net.dewep.intranetepitech.ActivityLogin"
+            android:name="net.dewep.intranetepitech.landing.LandingActivity"
             android:theme="@style/AppThemeNoBar" >
         </activity>
         <activity

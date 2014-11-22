@@ -9,10 +9,7 @@
         android:layout_height="40.0dp"
         android:background="@color/blue"
         android:gravity="center_vertical"
-        android:paddingBottom="3.0dp"
-        android:paddingLeft="10.0dp"
-        android:paddingRight="3.0dp"
-        android:paddingTop="3.0dp" >
+        android:padding="3.0dp" >
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -22,15 +19,23 @@
             android:gravity="center_vertical"
             android:orientation="horizontal" >
 
-            <ImageView
+            <LinearLayout
                 android:id="@+id/landing_logo"
                 android:layout_width="wrap_content"
-                android:layout_height="30.0dp"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/epitech"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_logo_grey" />
+                android:layout_height="fill_parent"
+                android:orientation="horizontal"
+                android:paddingLeft="10.0dp"
+                android:paddingRight="10.0dp" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30.0dp"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/epitech"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_logo_grey" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -49,59 +54,33 @@
                 android:paddingLeft="10.0dp"
                 android:paddingRight="10.0dp" >
 
-                <LinearLayout
-                    android:id="@+id/landing_connection_progress"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:orientation="horizontal" >
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingLeft="6.0dp"
+                    android:paddingRight="6.0dp"
+                    android:text="@string/landing_connection"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="12.0sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:paddingLeft="6.0dp"
-                        android:paddingRight="6.0dp"
-                        android:text="@string/landing_connection"
-                        android:textAllCaps="true"
-                        android:textColor="@color/white"
-                        android:textSize="12.0sp"
-                        android:textStyle="bold" />
+                <ProgressBar
+                    android:id="@+id/landing_connection_progressbar"
+                    android:layout_width="20.0dp"
+                    android:layout_height="20.0dp"
+                    android:layout_gravity="center" />
 
-                    <ProgressBar
-                        android:id="@+id/landing_connection_progressbar"
-                        android:layout_width="20.0dp"
-                        android:layout_height="20.0dp"
-                        android:layout_gravity="center" />
-                </LinearLayout>
-
-                <LinearLayout
+                <ImageView
                     android:id="@+id/landing_connection_error"
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:orientation="horizontal"
-                    android:visibility="gone" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:paddingLeft="6.0dp"
-                        android:paddingRight="6.0dp"
-                        android:text="@string/landing_connection"
-                        android:textAllCaps="true"
-                        android:textColor="@color/error"
-                        android:textSize="12.0sp"
-                        android:textStyle="bold" />
-
-                    <ImageView
-                        android:layout_width="20.0dp"
-                        android:layout_height="20.0dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="@string/epitech"
-                        android:src="@drawable/ic_error" />
-                </LinearLayout>
+                    android:layout_width="20.0dp"
+                    android:layout_height="20.0dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/epitech"
+                    android:src="@drawable/ic_error"
+                    android:visibility="gone" />
             </LinearLayout>
 
             <View
