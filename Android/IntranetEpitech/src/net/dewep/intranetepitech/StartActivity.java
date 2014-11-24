@@ -17,8 +17,6 @@
 
 package net.dewep.intranetepitech;
 
-import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
 import net.dewep.intranetepitech.landing.LandingActivity;
 import fr.qinder.Q;
 import android.app.Activity;
@@ -33,14 +31,13 @@ import android.os.Bundle;
  */
 public class StartActivity extends Activity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Fabric.with(this, new Crashlytics());
-        Q.init(this);
-        Intent intent = new Intent(StartActivity.this, LandingActivity.class);
-        startActivity(intent);
-        finish();
-    }
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		Q.init(this);
+		Intent intent = new Intent(StartActivity.this, LandingActivity.class);
+		startActivity(intent);
+		finish();
+	}
 
 }
