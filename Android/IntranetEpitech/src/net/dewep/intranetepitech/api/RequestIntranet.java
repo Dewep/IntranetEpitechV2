@@ -1,3 +1,20 @@
+/*
+ * Copyright (C) 2014 Maigret Aurelien / Colin Julien
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package net.dewep.intranetepitech.api;
 
 import org.json.JSONObject;
@@ -5,13 +22,20 @@ import org.json.JSONObject;
 import fr.qinder.api.APIRequest;
 import fr.qinder.tools.JSON;
 
+/**
+ * TODO: Comments this class
+ * 
+ * @author Maigret Aurelien
+ * @author Colin Julien
+ */
 public abstract class RequestIntranet extends APIRequest {
-	private Boolean with_json = true;
+
+	private Boolean withJson = true;
 	private JSONObject json = null;
 
 	public RequestIntranet(String _url, Boolean _with_json) {
 		super(Configurations.getHost() + _url);
-		with_json = _with_json;
+		withJson = _with_json;
 	}
 
 	public RequestIntranet(String _url) {
@@ -24,7 +48,7 @@ public abstract class RequestIntranet extends APIRequest {
 
 	public void preExecute() {
 		super.preExecute();
-		if (with_json) {
+		if (withJson) {
 			this.addGet("format", "json");
 		}
 	}
@@ -34,7 +58,7 @@ public abstract class RequestIntranet extends APIRequest {
 		if (response.data != null && response.data.startsWith("//") && response.data.indexOf('\n') != -1) {
 			response.data = response.data.substring(response.data.indexOf('\n') + 1);
 		}
-		if (with_json) {
+		if (withJson) {
 			json = JSON.getObject(response.data);
 		}
 	}
@@ -50,4 +74,5 @@ public abstract class RequestIntranet extends APIRequest {
 
 	public abstract void onSuccess();
 	public abstract void onError();
+
 }
