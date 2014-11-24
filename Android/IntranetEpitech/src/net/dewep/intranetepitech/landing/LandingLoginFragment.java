@@ -38,54 +38,54 @@ import android.widget.TextView.OnEditorActionListener;
  */
 public class LandingLoginFragment extends LandingFragment implements OnClickListener, OnEditorActionListener {
 
-	private EditText mLandingLoginLogin = null;
-	private EditText mLandingLoginPassword = null;
-	private Button mLandingLoginConnect = null;
-	private TextView mLandingLoginError = null;
+    private EditText mLandingLoginLogin = null;
+    private EditText mLandingLoginPassword = null;
+    private Button mLandingLoginConnect = null;
+    private TextView mLandingLoginError = null;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.landing_login_fragment, container, false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.landing_login_fragment, container, false);
 
-		mLandingLoginLogin = (EditText) rootView.findViewById(R.id.landing_login_login);
-		mLandingLoginPassword = (EditText) rootView.findViewById(R.id.landing_login_password);
-		mLandingLoginConnect = (Button) rootView.findViewById(R.id.landing_login_connect);
-		mLandingLoginError = (TextView) rootView.findViewById(R.id.landing_login_error);
+        mLandingLoginLogin = (EditText) rootView.findViewById(R.id.landing_login_login);
+        mLandingLoginPassword = (EditText) rootView.findViewById(R.id.landing_login_password);
+        mLandingLoginConnect = (Button) rootView.findViewById(R.id.landing_login_connect);
+        mLandingLoginError = (TextView) rootView.findViewById(R.id.landing_login_error);
 
-		mLandingLoginLogin.setText(EpitechAccount.getLogin());
-		mLandingLoginConnect.setOnClickListener(this);
+        mLandingLoginLogin.setText(EpitechAccount.getLogin());
+        mLandingLoginConnect.setOnClickListener(this);
 
-		mLandingLoginPassword.setOnEditorActionListener(this);
+        mLandingLoginPassword.setOnEditorActionListener(this);
 
-		this.updateFragmentData();
+        this.updateFragmentData();
 
-		return rootView;
-	}
+        return rootView;
+    }
 
-	public void testConnection() {
-		if (mLandingLoginLogin != null && mLandingLoginPassword != null && mLandingLoginError != null) {
-			EpitechAccount.setLogin(mLandingLoginLogin.getText().toString());
-			EpitechAccount.setPassword(mLandingLoginPassword.getText().toString());
-			getLandingActivity().testConnection();
-		}
-	}
+    public void testConnection() {
+        if (mLandingLoginLogin != null && mLandingLoginPassword != null && mLandingLoginError != null) {
+            EpitechAccount.setLogin(mLandingLoginLogin.getText().toString());
+            EpitechAccount.setPassword(mLandingLoginPassword.getText().toString());
+            getLandingActivity().testConnection();
+        }
+    }
 
-	@Override
-	public void updateFragmentData() {
-		if (mLandingLoginError != null) {
-			mLandingLoginError.setText(getLandingActivity().getMessageConnectError());
-		}
-	}
+    @Override
+    public void updateFragmentData() {
+        if (mLandingLoginError != null) {
+            mLandingLoginError.setText(getLandingActivity().getMessageConnectError());
+        }
+    }
 
-	@Override
-	public void onClick(View v) {
-		testConnection();
-	}
+    @Override
+    public void onClick(View v) {
+        testConnection();
+    }
 
-	@Override
-	public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-		testConnection();
-		return true;
-	}
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        testConnection();
+        return true;
+    }
 
 }

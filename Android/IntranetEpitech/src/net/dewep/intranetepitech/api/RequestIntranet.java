@@ -30,49 +30,50 @@ import fr.qinder.tools.JSON;
  */
 public abstract class RequestIntranet extends APIRequest {
 
-	private Boolean withJson = true;
-	private JSONObject json = null;
+    private Boolean withJson = true;
+    private JSONObject json = null;
 
-	public RequestIntranet(String _url, Boolean _with_json) {
-		super(Configurations.getHost() + _url);
-		withJson = _with_json;
-	}
+    public RequestIntranet(String _url, Boolean _with_json) {
+        super(Configurations.getHost() + _url);
+        withJson = _with_json;
+    }
 
-	public RequestIntranet(String _url) {
-		super(Configurations.getFullHost() + _url);
-	}
+    public RequestIntranet(String _url) {
+        super(Configurations.getFullHost() + _url);
+    }
 
-	public JSONObject getJSON() {
-		return json;
-	}
+    public JSONObject getJSON() {
+        return json;
+    }
 
-	public void preExecute() {
-		super.preExecute();
-		if (withJson) {
-			this.addGet("format", "json");
-		}
-	}
+    public void preExecute() {
+        super.preExecute();
+        if (withJson) {
+            this.addGet("format", "json");
+        }
+    }
 
-	public void postExecute() {
-		super.preExecute();
-		if (response.data != null && response.data.startsWith("//") && response.data.indexOf('\n') != -1) {
-			response.data = response.data.substring(response.data.indexOf('\n') + 1);
-		}
-		if (withJson) {
-			json = JSON.getObject(response.data);
-		}
-	}
+    public void postExecute() {
+        super.preExecute();
+        if (response.data != null && response.data.startsWith("//") && response.data.indexOf('\n') != -1) {
+            response.data = response.data.substring(response.data.indexOf('\n') + 1);
+        }
+        if (withJson) {
+            json = JSON.getObject(response.data);
+        }
+    }
 
-	@Override
-	public void onResult() {
-		if (response.code == 200) {
-			onSuccess();
-		} else {
-			onError();
-		}
-	}
+    @Override
+    public void onResult() {
+        if (response.code == 200) {
+            onSuccess();
+        } else {
+            onError();
+        }
+    }
 
-	public abstract void onSuccess();
-	public abstract void onError();
+    public abstract void onSuccess();
+
+    public abstract void onError();
 
 }

@@ -25,26 +25,26 @@ package net.dewep.intranetepitech.api;
  */
 public final class Configurations {
 
-	/**
-	 * Constructor, not called, because this is an Utility Class.
-	 */
-	private Configurations() {
-	}
+    /**
+     * Constructor, not called, because this is an Utility Class.
+     */
+    private Configurations() {
+    }
 
-	public static String getFullHost() {
-		return "https://" + getHost();
-	}
+    public static String getFullHost() {
+        return "https://" + getHost();
+    }
 
-	public static String getHost() {
-		return "intra.epitech.eu";
-	}
+    public static String getHost() {
+        return "intra.epitech.eu";
+    }
 
-	public static String getPathLogin() {
-		return "/";
-	}
+    public static String getPathLogin() {
+        return "/";
+    }
 
-	public static String getPathDashboard() {
-		return "/";
-	}
+    public static String getPathDashboard() {
+        return "/";
+    }
 
 }

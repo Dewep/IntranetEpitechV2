@@ -32,24 +32,24 @@ import android.widget.TextView;
  */
 public class LandingHomeFragment extends LandingFragment {
 
-	private TextView mLandingHomeState = null;
+    private TextView mLandingHomeState = null;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.landing_home_fragment, container, false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.landing_home_fragment, container, false);
 
-		mLandingHomeState = (TextView) rootView.findViewById(R.id.landing_home_state);
+        mLandingHomeState = (TextView) rootView.findViewById(R.id.landing_home_state);
 
-		this.updateFragmentData();
+        this.updateFragmentData();
 
-		return rootView;
-	}
+        return rootView;
+    }
 
-	@Override
-	public void updateFragmentData() {
-		if (mLandingHomeState != null) {
-			mLandingHomeState.setText(getLandingActivity().getMessageState());
-		}
-	}
+    @Override
+    public void updateFragmentData() {
+        if (mLandingHomeState != null) {
+            mLandingHomeState.setText(getLandingActivity().getMessageState());
+        }
+    }
 
 }

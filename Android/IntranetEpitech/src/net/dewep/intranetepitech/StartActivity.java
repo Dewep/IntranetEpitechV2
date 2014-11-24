@@ -31,13 +31,13 @@ import android.os.Bundle;
  */
 public class StartActivity extends Activity {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		Q.init(this);
-		Intent intent = new Intent(StartActivity.this, LandingActivity.class);
-		startActivity(intent);
-		finish();
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Q.init(this);
+        Intent intent = new Intent(StartActivity.this, LandingActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
 }

@@ -29,11 +29,11 @@ import net.dewep.intranetepitech.api.RequestIntranet;
  */
 public abstract class LoginAPI extends RequestIntranet {
 
-	public LoginAPI(String login, String password) {
-		super(Configurations.getPathLogin());
-		addPost("login", login);
-		addPost("password", password);
-		IntranetAPI.request("LoginAPI", this).execute();
-	}
+    public LoginAPI(String login, String password) {
+        super(Configurations.getPathLogin());
+        addPost("login", login);
+        addPost("password", password);
+        IntranetAPI.request("LoginAPI", this).execute();
+    }
 
 }

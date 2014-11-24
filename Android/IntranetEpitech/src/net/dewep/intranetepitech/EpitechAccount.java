@@ -27,53 +27,122 @@ import fr.qinder.pref.Preferences;
  */
 public final class EpitechAccount {
 
-	/**
-	 * Constructor, not called, because this is an Utility Class.
-	 */
-	private EpitechAccount() {
-	}
+    private static final String NAMESPACE_ACCOUNT = "Account";
 
-	public static void set(String key, String value) { Preferences.set("Account", key, value); }
-	public static String get(String key, String default_value) { return Preferences.get("Account", key, default_value); }
-	public static void set(String key, int value) { Preferences.set("Account", key, value); }
-	public static int get(String key, int default_value) { return Preferences.get("Account", key, default_value); }
+    /**
+     * Constructor, not called, because this is an Utility Class.
+     */
+    private EpitechAccount() {
+    }
 
-	public static void setLogin(String value) { set("login", value); }
-	public static String getLogin(String default_value) { return get("login", default_value); }
-	public static String getLogin() { return getLogin(""); }
+    public static void set(String key, String value) {
+        Preferences.set(NAMESPACE_ACCOUNT, key, value);
+    }
 
-	public static void setPassword(String value) { set("password", value); }
-	public static String getPassword(String default_value) { return get("password", default_value); }
-	public static String getPassword() { return getPassword(""); }
+    public static String get(String key, String defaultValue) {
+        return Preferences.get(NAMESPACE_ACCOUNT, key, defaultValue);
+    }
 
-	public static void setTitle(String value) { set("title", value); }
-	public static String getTitle(String default_value) { return get("title", default_value); }
-	public static String getTitle() { return getTitle(""); }
+    public static void set(String key, int value) {
+        Preferences.set(NAMESPACE_ACCOUNT, key, value);
+    }
 
-	public static void setLastname(String value) { set("lastname", value); }
-	public static String getLastname(String default_value) { return get("lastname", default_value); }
-	public static String getLastname() { return getLastname(""); }
+    public static int get(String key, int default_value) {
+        return Preferences.get(NAMESPACE_ACCOUNT, key, default_value);
+    }
 
-	public static void setFirstname(String value) { set("firstname", value); }
-	public static String getFirstname(String default_value) { return get("firstname", default_value); }
-	public static String getFirstname() { return getFirstname(""); }
+    public static void setLogin(String value) {
+        set("login", value);
+    }
 
-	public static void setLocation(String value) { set("location", value); }
-	public static String getLocation(String default_value) { return get("location", default_value); }
-	public static String getLocation() { return getLocation(""); }
+    public static String getLogin(String defaultValue) {
+        return get("login", defaultValue);
+    }
 
-	public static void setPromo(int value) { set("promo", value); }
-	public static int getPromo(int default_value) { return get("promo", default_value); }
-	public static int getPromo() { return getPromo(0); }
+    public static String getLogin() {
+        return getLogin("");
+    }
 
-	public static void logout() {
-		setLogin(null);
-		setPassword(null);
-		setTitle(null);
-		setLastname(null);
-		setFirstname(null);
-		setLocation(null);
-		setPromo(0);
-	}
+    public static void setPassword(String value) {
+        set("password", value);
+    }
+
+    public static String getPassword(String defaultValue) {
+        return get("password", defaultValue);
+    }
+
+    public static String getPassword() {
+        return getPassword("");
+    }
+
+    public static void setTitle(String value) {
+        set("title", value);
+    }
+
+    public static String getTitle(String defaultValue) {
+        return get("title", defaultValue);
+    }
+
+    public static String getTitle() {
+        return getTitle("");
+    }
+
+    public static void setLastname(String value) {
+        set("lastname", value);
+    }
+
+    public static String getLastname(String defaultValue) {
+        return get("lastname", defaultValue);
+    }
+
+    public static String getLastname() {
+        return getLastname("");
+    }
+
+    public static void setFirstname(String value) {
+        set("firstname", value);
+    }
+
+    public static String getFirstname(String defaultValue) {
+        return get("firstname", defaultValue);
+    }
+
+    public static String getFirstname() {
+        return getFirstname("");
+    }
+
+    public static void setLocation(String value) {
+        set("location", value);
+    }
+
+    public static String getLocation(String defaultValue) {
+        return get("location", defaultValue);
+    }
+
+    public static String getLocation() {
+        return getLocation("");
+    }
+
+    public static void setPromo(int value) {
+        set("promo", value);
+    }
+
+    public static int getPromo(int defaultValue) {
+        return get("promo", defaultValue);
+    }
+
+    public static int getPromo() {
+        return getPromo(0);
+    }
+
+    public static void logout() {
+        setLogin(null);
+        setPassword(null);
+        setTitle(null);
+        setLastname(null);
+        setFirstname(null);
+        setLocation(null);
+        setPromo(0);
+    }
 
 }
