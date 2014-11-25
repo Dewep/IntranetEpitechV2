@@ -19,7 +19,11 @@ package net.dewep.intranetepitech.landing;
 
 import java.util.List;
 
+import org.apache.http.HttpStatus;
+import org.json.JSONObject;
+
 import fr.qinder.Q;
+import fr.qinder.api.APIResponse;
 import fr.qinder.tools.JSON;
 import net.dewep.intranetepitech.ActivityMain;
 import net.dewep.intranetepitech.EpitechAccount;
@@ -51,7 +55,6 @@ import android.widget.ProgressBar;
  */
 public class LandingActivity extends FragmentActivity implements OnClickListener, OnPageChangeListener {
 
-    private static final int HTTP_CODE_FORBIDDEN = 403;
     private static final int NB_PAGES_IN_LANDING = 3;
 
 	// ViewPager variables
@@ -177,14 +180,35 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
     public void testConnection() {
         testConnection(true);
     }
+    
+    private void onSuccessLogin(JSONObject jsonObject) {
+        EpitechAccount.setTitle(JSON.parse(jsonObject, "infos>title", EpitechAccount.getLogin()));
+        EpitechAccount.setLastname(JSON.parse(jsonObject, "infos>lastname", ""));
+        EpitechAccount.setFirstname(JSON.parse(jsonObject, "infos>firstname", ""));
+        EpitechAccount.setLocation(JSON.parse(jsonObject, "infos>location", ""));
+        EpitechAccount.setPromo(JSON.parse(jsonObject, "infos>firstname", 0));
+        Intent intent = new Intent(LandingActivity.this, ActivityMain.class);
+        startActivity(intent);
+        finish();    	
+    }
 
+    private void onErrorLogin(APIResponse response) {
+        if (response.code == HttpStatus.SC_FORBIDDEN) {
+            setMessageConnectError(Q.getString(R.string.landing_bad_identity));
+            setConnectionError();
+        } else {
+            setMessageConnectError(Q.getString(R.string.landing_connection_impossible));
+            setConnectionError();
+        }
+    }
+    
     public void testConnection(boolean isStrict) {
         String login = EpitechAccount.getLogin();
         String password = EpitechAccount.getPassword();
-        if (login.equals("") || login.length() < 2) {
+        if (login.equals("") || login.length() == 0) {
             this.setMessageConnectError(Q.getString(R.string.landing_provide_login));
             this.setConnectionError(isStrict);
-        } else if (password.equals("") || password.length() < 2) {
+        } else if (password.equals("") || password.length() == 0) {
             this.setMessageConnectError(Q.getString(R.string.landing_provide_password));
             this.setConnectionError(isStrict);
         } else {
@@ -193,25 +217,12 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
             new LoginAPI(login, password) {
                 @Override
                 public void onSuccess() {
-                    EpitechAccount.setTitle(JSON.parse(getJSON(), "infos>title", EpitechAccount.getLogin()));
-                    EpitechAccount.setLastname(JSON.parse(getJSON(), "infos>lastname", ""));
-                    EpitechAccount.setFirstname(JSON.parse(getJSON(), "infos>firstname", ""));
-                    EpitechAccount.setLocation(JSON.parse(getJSON(), "infos>location", ""));
-                    EpitechAccount.setPromo(JSON.parse(getJSON(), "infos>firstname", 0));
-                    Intent intent = new Intent(LandingActivity.this, ActivityMain.class);
-                    startActivity(intent);
-                    finish();
+                	LandingActivity.this.onSuccessLogin(getJSON());
                 }
 
                 @Override
                 public void onError() {
-                    if (response.code == HTTP_CODE_FORBIDDEN) {
-                        setMessageConnectError(Q.getString(R.string.landing_bad_identity));
-                        setConnectionError();
-                    } else {
-                        setMessageConnectError(Q.getString(R.string.landing_connection_impossible));
-                        setConnectionError();
-                    }
+                	LandingActivity.this.onErrorLogin(response);
                 }
             };
         }
