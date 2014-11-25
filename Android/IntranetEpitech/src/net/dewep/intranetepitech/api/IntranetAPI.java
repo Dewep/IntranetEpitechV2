@@ -53,7 +53,7 @@ public final class IntranetAPI {
     }
 
     private APIRequestsListener createListener() {
-        return new APIRequestsListener(null);
+        return new APIRequestsListener();
     }
 
     public static APIRequestsListener request(APIRequest request) {
@@ -65,7 +65,7 @@ public final class IntranetAPI {
             api.get(id).cancelTask();
             api.remove(id);
         }
-        api.put(id, new APIRequestsListener(null));
+        api.put(id, new APIRequestsListener());
         return api.get(id);
     }
 
