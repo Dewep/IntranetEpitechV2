@@ -17,6 +17,7 @@
 
 package net.dewep.intranetepitech.api;
 
+import org.apache.http.HttpStatus;
 import org.json.JSONObject;
 
 import fr.qinder.api.APIRequest;
@@ -32,7 +33,6 @@ public abstract class RequestIntranet extends APIRequest {
 
     private Boolean mWithJson = true;
     private JSONObject mJson = null;
-    public static final int HTTP_CODE_SUCCESS = 200;
 
     public RequestIntranet(String url, Boolean withJson) {
         super(Configurations.getHost() + url);
@@ -66,7 +66,7 @@ public abstract class RequestIntranet extends APIRequest {
 
     @Override
     public void onResult() {
-        if (response.code == HTTP_CODE_SUCCESS) {
+        if (response.code == HttpStatus.SC_OK) {
             onSuccess();
         } else {
             onError();
