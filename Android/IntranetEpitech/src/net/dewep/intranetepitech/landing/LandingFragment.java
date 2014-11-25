@@ -31,8 +31,9 @@ public abstract class LandingFragment extends Fragment {
     private LandingActivity mLandingActivity = null;
 
     public LandingActivity getLandingActivity() {
-        if (mLandingActivity == null)
+        if (mLandingActivity == null) {
             mLandingActivity = (LandingActivity) this.getActivity();
+        }
         return mLandingActivity;
     }
 

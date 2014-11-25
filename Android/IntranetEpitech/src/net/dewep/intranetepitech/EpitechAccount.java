@@ -47,8 +47,8 @@ public final class EpitechAccount {
         Preferences.set(NAMESPACE_ACCOUNT, key, value);
     }
 
-    public static int get(String key, int default_value) {
-        return Preferences.get(NAMESPACE_ACCOUNT, key, default_value);
+    public static int get(String key, int defaultValue) {
+        return Preferences.get(NAMESPACE_ACCOUNT, key, defaultValue);
     }
 
     public static void setLogin(String value) {

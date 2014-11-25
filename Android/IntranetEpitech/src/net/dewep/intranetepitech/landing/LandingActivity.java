@@ -51,16 +51,16 @@ import android.widget.ProgressBar;
  */
 public class LandingActivity extends FragmentActivity implements OnClickListener, OnPageChangeListener {
 
-    // ViewPager variables
+    private static final int HTTP_CODE_FORBIDDEN = 403;
+    private static final int NB_PAGES_IN_LANDING = 3;
+
+	// ViewPager variables
     private ViewPager mPager;
-    private PagerAdapter mPagerAdapter;
 
     // View of this activity
     private LinearLayout mLandingLogo;
-    private LinearLayout mLandingConnection;
     private ProgressBar mLandingConnectionProgressbar;
     private ImageView mLandingConnectionError;
-    private LinearLayout mLandingAbout;
 
     // Methods variables
     private String mError = null;
@@ -71,10 +71,17 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landing_view_pager);
 
+        // ViewPager variables
+        PagerAdapter pagerAdapter;
+
+        // View of this activity
+        LinearLayout landingConnection;
+        LinearLayout landingAbout;
+        
         // Initial ViewPager
         mPager = (ViewPager) findViewById(R.id.landing_fragment);
-        mPagerAdapter = new LandingSlidePagerAdapter(getSupportFragmentManager());
-        mPager.setAdapter(mPagerAdapter);
+        pagerAdapter = new LandingSlidePagerAdapter(getSupportFragmentManager());
+        mPager.setAdapter(pagerAdapter);
         mPager.setOnPageChangeListener(this);
 
         // Set Animation
@@ -82,15 +89,15 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
 
         // Get views
         mLandingLogo = (LinearLayout) findViewById(R.id.landing_logo);
-        mLandingConnection = (LinearLayout) findViewById(R.id.landing_connection);
+        landingConnection = (LinearLayout) findViewById(R.id.landing_connection);
         mLandingConnectionProgressbar = (ProgressBar) findViewById(R.id.landing_connection_progressbar);
         mLandingConnectionError = (ImageView) findViewById(R.id.landing_connection_error);
-        mLandingAbout = (LinearLayout) findViewById(R.id.landing_about);
+        landingAbout = (LinearLayout) findViewById(R.id.landing_about);
 
         // SetOnClickListener of the links in the menu
         mLandingLogo.setOnClickListener(this);
-        mLandingConnection.setOnClickListener(this);
-        mLandingAbout.setOnClickListener(this);
+        landingConnection.setOnClickListener(this);
+        landingAbout.setOnClickListener(this);
 
         // Initial Activity
         mLandingLogo.setVisibility(View.GONE);
@@ -174,10 +181,10 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
     public void testConnection(boolean isStrict) {
         String login = EpitechAccount.getLogin();
         String password = EpitechAccount.getPassword();
-        if (login == "" || login.length() < 2) {
+        if (login.equals("") || login.length() < 2) {
             this.setMessageConnectError(Q.getString(R.string.landing_provide_login));
             this.setConnectionError(isStrict);
-        } else if (password == "" || password.length() < 2) {
+        } else if (password.equals("") || password.length() < 2) {
             this.setMessageConnectError(Q.getString(R.string.landing_provide_password));
             this.setConnectionError(isStrict);
         } else {
@@ -198,7 +205,7 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
 
                 @Override
                 public void onError() {
-                    if (response.code == 403) {
+                    if (response.code == HTTP_CODE_FORBIDDEN) {
                         setMessageConnectError(Q.getString(R.string.landing_bad_identity));
                         setConnectionError();
                     } else {
@@ -264,7 +271,7 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
         @Override
         public int getCount() {
             // Return the number of pages
-            return 3;
+            return NB_PAGES_IN_LANDING;
         }
 
     }

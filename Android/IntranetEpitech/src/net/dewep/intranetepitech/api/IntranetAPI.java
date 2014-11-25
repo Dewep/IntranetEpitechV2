@@ -18,6 +18,7 @@
 package net.dewep.intranetepitech.api;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import fr.qinder.api.APICookie;
 import fr.qinder.api.APIRequest;
@@ -33,14 +34,14 @@ public final class IntranetAPI {
 
     private static volatile IntranetAPI instance = null;
 
-    private HashMap<String, APIRequestsListener> api;
+    private Map<String, APIRequestsListener> api;
 
     private IntranetAPI() {
         api = new HashMap<String, APIRequestsListener>();
         APICookie.add(Configurations.getFullHost(), "language", "fr");
     }
 
-    public final static IntranetAPI getInstance() {
+    private static IntranetAPI getInstance() {
         if (IntranetAPI.instance == null) {
             synchronized (IntranetAPI.class) {
                 if (IntranetAPI.instance == null) {

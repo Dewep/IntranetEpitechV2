@@ -30,25 +30,26 @@ import fr.qinder.tools.JSON;
  */
 public abstract class RequestIntranet extends APIRequest {
 
-    private Boolean withJson = true;
-    private JSONObject json = null;
+    private Boolean mWithJson = true;
+    private JSONObject mJson = null;
+    public static final int HTTP_CODE_SUCCESS = 200;
 
-    public RequestIntranet(String _url, Boolean _with_json) {
-        super(Configurations.getHost() + _url);
-        withJson = _with_json;
+    public RequestIntranet(String url, Boolean withJson) {
+        super(Configurations.getHost() + url);
+        this.mWithJson = withJson;
     }
 
-    public RequestIntranet(String _url) {
-        super(Configurations.getFullHost() + _url);
+    public RequestIntranet(String url) {
+        super(Configurations.getFullHost() + url);
     }
 
     public JSONObject getJSON() {
-        return json;
+        return mJson;
     }
 
     public void preExecute() {
         super.preExecute();
-        if (withJson) {
+        if (mWithJson) {
             this.addGet("format", "json");
         }
     }
@@ -58,14 +59,14 @@ public abstract class RequestIntranet extends APIRequest {
         if (response.data != null && response.data.startsWith("//") && response.data.indexOf('\n') != -1) {
             response.data = response.data.substring(response.data.indexOf('\n') + 1);
         }
-        if (withJson) {
-            json = JSON.getObject(response.data);
+        if (mWithJson) {
+            mJson = JSON.getObject(response.data);
         }
     }
 
     @Override
     public void onResult() {
-        if (response.code == 200) {
+        if (response.code == HTTP_CODE_SUCCESS) {
             onSuccess();
         } else {
             onError();
