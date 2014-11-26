@@ -193,7 +193,7 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
     }
 
     private void onErrorLogin(APIResponse response) {
-        if (response.code == HttpStatus.SC_FORBIDDEN) {
+        if (response.getCode() == HttpStatus.SC_FORBIDDEN) {
             setMessageConnectError(Q.getString(R.string.landing_bad_identity));
             setConnectionError();
         } else {
