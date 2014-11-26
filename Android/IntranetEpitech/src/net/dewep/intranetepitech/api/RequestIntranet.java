@@ -56,17 +56,17 @@ public abstract class RequestIntranet extends APIRequest {
 
     public void postExecute() {
         super.preExecute();
-        if (response.data != null && response.data.startsWith("//") && response.data.indexOf('\n') != -1) {
-            response.data = response.data.substring(response.data.indexOf('\n') + 1);
+        if (response.getData() != null && response.getData().startsWith("//") && response.getData().indexOf('\n') != -1) {
+            response.setData(response.getData().substring(response.getData().indexOf('\n') + 1));
         }
         if (mWithJson) {
-            mJson = JSON.getObject(response.data);
+            mJson = JSON.getObject(response.getData());
         }
     }
 
     @Override
     public void onResult() {
-        if (response.code == HttpStatus.SC_OK) {
+        if (response.getCode() == HttpStatus.SC_OK) {
             onSuccess();
         } else {
             onError();
