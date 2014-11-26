@@ -33,7 +33,7 @@ public class LandingAboutFragment extends LandingFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	return (ViewGroup) inflater.inflate(R.layout.landing_about_fragment, container, false);
+        return (ViewGroup) inflater.inflate(R.layout.landing_about_fragment, container, false);
     }
 
 }

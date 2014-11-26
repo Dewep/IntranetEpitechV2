@@ -57,7 +57,7 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
 
     private static final int NB_PAGES_IN_LANDING = 3;
 
-	// ViewPager variables
+    // ViewPager variables
     private ViewPager mPager;
 
     // View of this activity
@@ -80,7 +80,7 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
         // View of this activity
         LinearLayout landingConnection;
         LinearLayout landingAbout;
-        
+
         // Initial ViewPager
         mPager = (ViewPager) findViewById(R.id.landing_fragment);
         pagerAdapter = new LandingSlidePagerAdapter(getSupportFragmentManager());
@@ -180,7 +180,7 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
     public void testConnection() {
         testConnection(true);
     }
-    
+
     private void onSuccessLogin(JSONObject jsonObject) {
         EpitechAccount.setTitle(JSON.parse(jsonObject, "infos>title", EpitechAccount.getLogin()));
         EpitechAccount.setLastname(JSON.parse(jsonObject, "infos>lastname", ""));
@@ -189,7 +189,7 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
         EpitechAccount.setPromo(JSON.parse(jsonObject, "infos>firstname", 0));
         Intent intent = new Intent(LandingActivity.this, ActivityMain.class);
         startActivity(intent);
-        finish();    	
+        finish();
     }
 
     private void onErrorLogin(APIResponse response) {
@@ -201,7 +201,7 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
             setConnectionError();
         }
     }
-    
+
     public void testConnection(boolean isStrict) {
         String login = EpitechAccount.getLogin();
         String password = EpitechAccount.getPassword();
@@ -217,12 +217,12 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
             new LoginAPI(login, password) {
                 @Override
                 public void onSuccess() {
-                	LandingActivity.this.onSuccessLogin(getJSON());
+                    LandingActivity.this.onSuccessLogin(getJSON());
                 }
 
                 @Override
                 public void onError() {
-                	LandingActivity.this.onErrorLogin(response);
+                    LandingActivity.this.onErrorLogin(response);
                 }
             };
         }

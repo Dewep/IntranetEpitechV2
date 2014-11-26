@@ -30,13 +30,13 @@ public class DepthPageTransformer implements ViewPager.PageTransformer {
 
     private static final float MIN_SCALE = 0.75f;
 
-    private void positionInfinityNegative(View view, float position) {
+    private void positionInfinityNegative(View view) {
         // [-Infinity,-1)
         // This page is way off-screen to the left.
         view.setAlpha(0);
     }
 
-    private void positionNegative(View view, float position) {
+    private void positionNegative(View view) {
         // [-1,0]
         // Use the default slide transition when moving to the left page
         view.setAlpha(1);
@@ -58,7 +58,7 @@ public class DepthPageTransformer implements ViewPager.PageTransformer {
         view.setScaleY(scaleFactor);
     }
 
-    private void positionInfinityPositive(View view, float position) {
+    private void positionInfinityPositive(View view) {
         // (1,+Infinity]
         // This page is way off-screen to the right.
         view.setAlpha(0);
@@ -66,13 +66,13 @@ public class DepthPageTransformer implements ViewPager.PageTransformer {
 
     public void transformPage(View view, float position) {
         if (position < -1) {
-            positionInfinityNegative(view, position);
+            positionInfinityNegative(view);
         } else if (position <= 0) {
-            positionNegative(view, position);
+            positionNegative(view);
         } else if (position <= 1) {
             positionPositive(view, position);
         } else {
-            positionInfinityPositive(view, position);
+            positionInfinityPositive(view);
         }
     }
 

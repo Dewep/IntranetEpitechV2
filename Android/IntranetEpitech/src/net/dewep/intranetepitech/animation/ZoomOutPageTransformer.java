@@ -25,7 +25,7 @@ public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
     private static final float MIN_SCALE = 0.85f;
     private static final float MIN_ALPHA = 0.5f;
 
-    private void positionInfinityNegative(View view, float position) {
+    private void positionInfinityNegative(View view) {
         // [-Infinity,-1)
         // This page is way off-screen to the left.
         view.setAlpha(0);
@@ -51,7 +51,7 @@ public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
         view.setAlpha(MIN_ALPHA + (scaleFactor - MIN_SCALE) / (1 - MIN_SCALE) * (1 - MIN_ALPHA));
     }
 
-    private void positionInfinityPositive(View view, float position) {
+    private void positionInfinityPositive(View view) {
         // (1,+Infinity]
         // This page is way off-screen to the right.
         view.setAlpha(0);
@@ -59,11 +59,11 @@ public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
 
     public void transformPage(View view, float position) {
         if (position < -1) {
-            positionInfinityNegative(view, position);
+            positionInfinityNegative(view);
         } else if (position <= 1) {
             positionPositive(view, position);
         } else {
-            positionInfinityPositive(view, position);
+            positionInfinityPositive(view);
         }
     }
 

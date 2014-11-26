@@ -40,7 +40,6 @@ public class LandingLoginFragment extends LandingFragment implements OnClickList
 
     private EditText mLandingLoginLogin = null;
     private EditText mLandingLoginPassword = null;
-    private Button mLandingLoginConnect = null;
     private TextView mLandingLoginError = null;
 
     @Override
@@ -49,11 +48,11 @@ public class LandingLoginFragment extends LandingFragment implements OnClickList
 
         mLandingLoginLogin = (EditText) rootView.findViewById(R.id.landing_login_login);
         mLandingLoginPassword = (EditText) rootView.findViewById(R.id.landing_login_password);
-        mLandingLoginConnect = (Button) rootView.findViewById(R.id.landing_login_connect);
+        Button landingLoginConnect = (Button) rootView.findViewById(R.id.landing_login_connect);
         mLandingLoginError = (TextView) rootView.findViewById(R.id.landing_login_error);
 
         mLandingLoginLogin.setText(EpitechAccount.getLogin());
-        mLandingLoginConnect.setOnClickListener(this);
+        landingLoginConnect.setOnClickListener(this);
 
         mLandingLoginPassword.setOnEditorActionListener(this);
 
