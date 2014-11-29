@@ -15,8 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.dewep.intranetepitech;
+package net.dewep.intranetepitech.ui;
 
+import net.dewep.intranetepitech.EpitechAccount;
+import net.dewep.intranetepitech.R;
+import net.dewep.intranetepitech.StartActivity;
 import net.dewep.intranetepitech.api.Configurations;
 import fr.qinder.api.APICookie;
 import android.app.Activity;

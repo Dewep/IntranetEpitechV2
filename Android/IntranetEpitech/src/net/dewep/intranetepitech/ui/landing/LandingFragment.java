@@ -15,13 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.dewep.intranetepitech;
+package net.dewep.intranetepitech.ui.landing;
 
-import net.dewep.intranetepitech.ui.landing.LandingActivity;
-import fr.qinder.Q;
 import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
+import android.support.v4.app.Fragment;
 
 /**
  * TODO: Comments this class
@@ -29,15 +26,24 @@ import android.os.Bundle;
  * @author Maigret Aurelien
  * @author Colin Julien
  */
-public class StartActivity extends Activity {
+public abstract class LandingFragment extends Fragment {
+
+    private LandingActivity mLandingActivity = null;
+
+    public LandingActivity getLandingActivity() {
+        if (mLandingActivity == null) {
+            mLandingActivity = (LandingActivity) this.getActivity();
+        }
+        return mLandingActivity;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Q.init(this);
-        Intent intent = new Intent(StartActivity.this, LandingActivity.class);
-        startActivity(intent);
-        finish();
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mLandingActivity = (LandingActivity) activity;
+    }
+
+    void updateFragmentData() {
     }
 
 }

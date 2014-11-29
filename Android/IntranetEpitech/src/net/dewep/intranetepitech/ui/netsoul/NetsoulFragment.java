@@ -14,10 +14,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-package net.dewep.intranetepitech.landing;
+package net.dewep.intranetepitech.ui.netsoul;
 
 import net.dewep.intranetepitech.R;
+import net.dewep.intranetepitech.ui.UiFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,11 +29,12 @@ import android.view.ViewGroup;
  * @author Maigret Aurelien
  * @author Colin Julien
  */
-public class LandingAboutFragment extends LandingFragment {
+public class NetsoulFragment extends UiFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return (ViewGroup) inflater.inflate(R.layout.landing_about_fragment, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.ui_netsoul_fragment, container, false);
+        return rootView;
     }
 
 }

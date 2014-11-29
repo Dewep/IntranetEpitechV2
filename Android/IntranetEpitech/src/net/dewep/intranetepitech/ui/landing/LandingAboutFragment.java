@@ -15,10 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.dewep.intranetepitech.landing;
+package net.dewep.intranetepitech.ui.landing;
 
-import android.app.Activity;
-import android.support.v4.app.Fragment;
+import net.dewep.intranetepitech.R;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 /**
  * TODO: Comments this class
@@ -26,24 +29,11 @@ import android.support.v4.app.Fragment;
  * @author Maigret Aurelien
  * @author Colin Julien
  */
-public abstract class LandingFragment extends Fragment {
-
-    private LandingActivity mLandingActivity = null;
-
-    public LandingActivity getLandingActivity() {
-        if (mLandingActivity == null) {
-            mLandingActivity = (LandingActivity) this.getActivity();
-        }
-        return mLandingActivity;
-    }
+public class LandingAboutFragment extends LandingFragment {
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        mLandingActivity = (LandingActivity) activity;
-    }
-
-    void updateFragmentData() {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return (ViewGroup) inflater.inflate(R.layout.ui_landing_about_fragment, container, false);
     }
 
 }

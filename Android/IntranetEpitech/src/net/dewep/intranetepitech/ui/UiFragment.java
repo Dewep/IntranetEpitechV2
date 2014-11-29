@@ -14,14 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+package net.dewep.intranetepitech.ui;
 
-package net.dewep.intranetepitech;
-
-import net.dewep.intranetepitech.ui.landing.LandingActivity;
-import fr.qinder.Q;
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
+import android.app.Fragment;
 
 /**
  * TODO: Comments this class
@@ -29,15 +24,10 @@ import android.os.Bundle;
  * @author Maigret Aurelien
  * @author Colin Julien
  */
-public class StartActivity extends Activity {
+public abstract class UiFragment extends Fragment {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Q.init(this);
-        Intent intent = new Intent(StartActivity.this, LandingActivity.class);
-        startActivity(intent);
-        finish();
+    public UiActivity getUiActivity() {
+        return (UiActivity) getActivity();
     }
 
 }

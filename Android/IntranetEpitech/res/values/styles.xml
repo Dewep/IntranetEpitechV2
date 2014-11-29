@@ -8,24 +8,6 @@
         <item name="android:editTextStyle">@style/EditTextAppTheme</item>
     </style>
 
-    <style name="ButtonAppTheme" parent="@android:style/Widget.Button">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:background">@drawable/btn_primary_states</item>
-        <item name="android:minWidth">64.0dip</item>
-        <item name="android:minHeight">48.0dip</item>
-        <item name="android:textSize">19.0sp</item>
-    </style>
-
-    <style name="TextViewAppTheme" parent="@android:style/Widget.TextView">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">16.0sp</item>
-    </style>
-
-    <style name="EditTextAppTheme" parent="@android:style/Widget.EditText">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">16.0sp</item>
-    </style>
-
     <style name="AppTheme" parent="AppBaseThemeCustom">
         <item name="android:windowNoTitle">false</item>
     </style>
@@ -33,34 +15,5 @@
     <style name="AppThemeNoBar" parent="AppBaseThemeCustom">
         <item name="android:windowNoTitle">true</item>
     </style>
-
-    <style name="TextAboutTitle" parent="TextViewAppTheme">
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">20.0dp</item>
-        <item name="android:layout_marginBottom">5.0dp</item>
-        <item name="android:textSize">19.0sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="TextAboutContent" parent="TextViewAppTheme">
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">20.0dp</item>
-        <item name="android:layout_marginBottom">10.0dp</item>
-    </style>
-
-    <color name="error">#ce291d</color>
-    <color name="blue_light">#2ebdf2</color>
-    <color name="blue">#015ca3</color>
-    <color name="white">#ffffff</color>
-    <color name="grey">#f5f3f3</color>
-    <color name="grey_dark">#737373</color>
-    <color name="black">#515151</color>
-    <color name="appoint_exam">#dd9473</color>
-    <color name="appoint_tp">#a48cbb</color>
-    <color name="appoint_class">#71adc1</color>
-    <color name="appoint_rdv">#e2aa55</color>
-    <color name="appoint_other">#668cb3</color>
 
 </resources>

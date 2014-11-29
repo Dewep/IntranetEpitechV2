@@ -8,6 +8,17 @@
     <string name="intranet_epitech">Intranet Epitech</string>
     <string name="image">Image</string>
 
+    <!-- Navigation -->
+    <string name="navigation_netsoul">Netsoul</string>
+    <string name="navigation_dashboard">Récapitulatif</string>
+    <string name="navigation_calendar">Calendrier</string>
+    <string name="navigation_susie">Susies</string>
+    <string name="navigation_mark">Notes</string>
+    <string name="navigation_trombi">Trombinoscope</string>
+    <string name="navigation_setting">Paramètres</string>
+    <string name="navigation_about">À propos</string>
+    <string name="navigation_project">Projets</string>
+
     <!-- Pages -->
     <string name="page_login">Connexion</string>
 

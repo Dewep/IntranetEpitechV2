@@ -50,7 +50,7 @@
                 android:id="@+id/landing_connection"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
-                android:background="@drawable/ic_actionbar_button_bg"
+                android:background="@drawable/hover_bg"
                 android:orientation="horizontal"
                 android:paddingLeft="10.0dp"
                 android:paddingRight="10.0dp" >
@@ -96,7 +96,7 @@
                 android:id="@+id/landing_about"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
-                android:background="@drawable/ic_actionbar_button_bg"
+                android:background="@drawable/hover_bg"
                 android:orientation="horizontal"
                 android:paddingLeft="10.0dp"
                 android:paddingRight="10.0dp" >

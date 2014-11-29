@@ -14,14 +14,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+package net.dewep.intranetepitech.ui.susie;
 
-package net.dewep.intranetepitech;
-
-import net.dewep.intranetepitech.ui.landing.LandingActivity;
-import fr.qinder.Q;
-import android.app.Activity;
-import android.content.Intent;
+import net.dewep.intranetepitech.R;
+import net.dewep.intranetepitech.ui.UiFragment;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 /**
  * TODO: Comments this class
@@ -29,15 +29,12 @@ import android.os.Bundle;
  * @author Maigret Aurelien
  * @author Colin Julien
  */
-public class StartActivity extends Activity {
+public class SusieFragment extends UiFragment {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Q.init(this);
-        Intent intent = new Intent(StartActivity.this, LandingActivity.class);
-        startActivity(intent);
-        finish();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.ui_susie_fragment, container, false);
+        return rootView;
     }
 
 }

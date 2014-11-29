@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.dewep.intranetepitech.landing;
+package net.dewep.intranetepitech.ui.landing;
 
 import net.dewep.intranetepitech.EpitechAccount;
 import net.dewep.intranetepitech.R;
@@ -44,7 +44,7 @@ public class LandingLoginFragment extends LandingFragment implements OnClickList
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.landing_login_fragment, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.ui_landing_login_fragment, container, false);
 
         mLandingLoginLogin = (EditText) rootView.findViewById(R.id.landing_login_login);
         mLandingLoginPassword = (EditText) rootView.findViewById(R.id.landing_login_password);

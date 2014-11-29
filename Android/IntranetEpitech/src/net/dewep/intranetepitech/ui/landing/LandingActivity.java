@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package net.dewep.intranetepitech.landing;
+package net.dewep.intranetepitech.ui.landing;
 
 import java.util.List;
 
@@ -25,11 +25,11 @@ import org.json.JSONObject;
 import fr.qinder.Q;
 import fr.qinder.api.APIResponse;
 import fr.qinder.tools.JSON;
-import net.dewep.intranetepitech.ActivityMain;
 import net.dewep.intranetepitech.EpitechAccount;
 import net.dewep.intranetepitech.R;
 import net.dewep.intranetepitech.animation.DepthPageTransformer;
 import net.dewep.intranetepitech.api.request.LoginAPI;
+import net.dewep.intranetepitech.ui.UiActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -72,7 +72,7 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.landing_view_pager);
+        setContentView(R.layout.ui_landing_view_pager);
 
         // ViewPager variables
         PagerAdapter pagerAdapter;
@@ -187,7 +187,7 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
         EpitechAccount.setFirstname(JSON.parse(jsonObject, "infos>firstname", ""));
         EpitechAccount.setLocation(JSON.parse(jsonObject, "infos>location", ""));
         EpitechAccount.setPromo(JSON.parse(jsonObject, "infos>firstname", 0));
-        Intent intent = new Intent(LandingActivity.this, ActivityMain.class);
+        Intent intent = new Intent(LandingActivity.this, UiActivity.class);
         startActivity(intent);
         finish();
     }
