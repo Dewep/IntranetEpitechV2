@@ -1,19 +1,26 @@
 <resources>
 
-    <style name="AppBaseTheme" parent="@android:Theme.Light"></style>
+    <style name="AppBaseTheme" parent="@style/Theme.AppCompat.Light"></style>
 
     <style name="AppBaseThemeCustom" parent="AppBaseTheme">
+        <item name="android:windowNoTitle">true</item>
         <item name="android:buttonStyle">@style/ButtonAppTheme</item>
         <item name="android:textViewStyle">@style/TextViewAppTheme</item>
         <item name="android:editTextStyle">@style/EditTextAppTheme</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryDark">@color/blue_dark</item>
+        <item name="colorAccent">@color/blue_light</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <!-- http://developer.android.com/training/material/theme.html#ColorPalette -->
     </style>
 
     <style name="AppTheme" parent="AppBaseThemeCustom">
-        <item name="android:windowNoTitle">false</item>
+        <!-- <item name="android:windowNoTitle">false</item> -->
     </style>
 
     <style name="AppThemeNoBar" parent="AppBaseThemeCustom">
-        <item name="android:windowNoTitle">true</item>
+        <!-- <item name="android:windowNoTitle">true</item> -->
     </style>
 
 </resources>

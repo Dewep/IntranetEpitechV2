@@ -7,13 +7,16 @@
     <FrameLayout
         android:id="@+id/ui_drawerlayout_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" >
+
+        <include layout="@layout/ui_toolbar" />
+    </FrameLayout>
 
     <fragment
         android:id="@+id/ui_drawerlayout_navigation"
+        android:name="net.dewep.intranetepitech.ui.NavigationFragment"
         android:layout_width="320dp"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:name="net.dewep.intranetepitech.ui.NavigationFragment" />
+        android:layout_gravity="start" />
 
 </android.support.v4.widget.DrawerLayout>

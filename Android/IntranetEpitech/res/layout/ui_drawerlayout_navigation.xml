@@ -16,7 +16,10 @@
             android:layout_height="wrap_content"
             android:background="@color/blue"
             android:orientation="horizontal"
-            android:padding="5dp" >
+            android:paddingBottom="15dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="15dp" >
 
             <ImageView
                 android:id="@+id/ui_navigation_personal_picture"

@@ -37,4 +37,9 @@ public class NetsoulFragment extends UiFragment {
         return rootView;
     }
 
+    @Override
+    protected int getIdTitle() {
+        return R.string.navigation_netsoul;
+    }
+
 }

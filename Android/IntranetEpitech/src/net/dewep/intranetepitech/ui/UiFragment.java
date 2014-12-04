@@ -14,9 +14,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package net.dewep.intranetepitech.ui;
 
-import android.app.Fragment;
+import fr.qinder.layout.DrawerLayoutFragment;
 
 /**
  * TODO: Comments this class
@@ -24,7 +25,7 @@ import android.app.Fragment;
  * @author Maigret Aurelien
  * @author Colin Julien
  */
-public abstract class UiFragment extends Fragment {
+public abstract class UiFragment extends DrawerLayoutFragment {
 
     public UiActivity getUiActivity() {
         return (UiActivity) getActivity();

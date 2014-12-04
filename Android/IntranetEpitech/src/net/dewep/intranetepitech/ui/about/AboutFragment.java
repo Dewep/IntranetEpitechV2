@@ -37,4 +37,9 @@ public class AboutFragment extends UiFragment {
         return rootView;
     }
 
+    @Override
+    protected int getIdTitle() {
+        return R.string.navigation_about;
+    }
+
 }

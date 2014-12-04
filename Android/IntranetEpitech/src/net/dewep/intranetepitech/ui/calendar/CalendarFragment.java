@@ -37,4 +37,9 @@ public class CalendarFragment extends UiFragment {
         return rootView;
     }
 
+    @Override
+    protected int getIdTitle() {
+        return R.string.navigation_calendar;
+    }
+
 }

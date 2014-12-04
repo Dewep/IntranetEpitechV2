@@ -37,4 +37,9 @@ public class SettingFragment extends UiFragment {
         return rootView;
     }
 
+    @Override
+    protected int getIdTitle() {
+        return R.string.navigation_setting;
+    }
+
 }

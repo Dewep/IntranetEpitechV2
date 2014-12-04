@@ -20,7 +20,7 @@ public class UiActivity extends DrawerLayoutActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ui_drawerlayout);
 
-        setConfigDrawerLayout(R.id.ui_drawerlayout, R.id.ui_drawerlayout_navigation, R.id.ui_drawerlayout_content, DashboardFragment.class.getName());
+        setConfigDrawerLayout(R.id.ui_toolbar, R.id.ui_drawerlayout, R.id.ui_drawerlayout_navigation, R.id.ui_drawerlayout_content, DashboardFragment.class.getName());
 
         addListenerDrawerNavigation(R.id.ui_navigation_about, AboutFragment.class.getName());
         addListenerDrawerNavigation(R.id.ui_navigation_calendar, CalendarFragment.class.getName());
