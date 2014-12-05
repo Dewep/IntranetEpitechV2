@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="Services" >
+        <CheckBoxPreference
+            android:name="settingService"
+            android:defaultValue="true"
+            android:key="settingService"
+            android:summary="Activer/désactiver le rappel des activités (via l&apos;envoi d&apos;une notification 5 minutes avant le début)"
+            android:title="Rappel des activités" >
+        </CheckBoxPreference>
+
+        <ListPreference
+            android:name="settingServiceFrequency"
+            android:entries="@array/serviceFrequency"
+            android:entryValues="@array/serviceFrequencyValues"
+            android:key="settingServiceFrequency"
+            android:summary="Laps de temps entre chaque actualisation des données."
+            android:title="Fréquences d&apos;actualisation" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Netsoul" >
+        <Preference
+            android:name="settingNetsoul"
+            android:key="settingNetsoul"
+            android:summary="Redirection sur la page des paramètres Netsoul."
+            android:title="Paramètres Netsoul" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Cache" >
+        <Preference
+            android:name="settingCache"
+            android:key="settingCache"
+            android:summary="Supprimer le cache (requêtes, images, ...)."
+            android:title="Vider le cache" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Comptes" >
+        <Preference
+            android:name="settingRelog"
+            android:key="settingRelog"
+            android:summary="Forcer la reconnexion."
+            android:title="Reconnexion" />
+        <Preference
+            android:name="settingLogout"
+            android:key="settingLogout"
+            android:summary="Déconnexion de la session en cours."
+            android:title="Se déconnecter" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

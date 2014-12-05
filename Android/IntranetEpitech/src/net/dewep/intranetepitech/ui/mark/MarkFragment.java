@@ -14,22 +14,24 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package net.dewep.intranetepitech.ui.mark;
 
+import fr.qinder.adapter.LibAdapter;
+import fr.qinder.adapter.ViewAdapter;
 import net.dewep.intranetepitech.EpitechAccount;
 import net.dewep.intranetepitech.R;
 import net.dewep.intranetepitech.api.model.MarkModel;
 import net.dewep.intranetepitech.api.request.MarkAPI;
 import net.dewep.intranetepitech.ui.UiFragment;
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 /**
@@ -39,18 +41,30 @@ import android.widget.TextView;
  * @author Colin Julien
  */
 public class MarkFragment extends UiFragment {
-    LinearLayout mLinearListview;
+    ListView mListview;
+    LibAdapter<MarkModel> mListviewAdapter = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.ui_mark_fragment, container, false);
-        mLinearListview = (LinearLayout) rootView.findViewById(R.id.ui_mark_linear_listview);
+        mListview = (ListView) rootView.findViewById(R.id.ui_mark_listview);
+        mListviewAdapter = new LibAdapter<MarkModel>(this.getActivity());
+        mListviewAdapter.setViewAdapter(new ViewAdapter<MarkModel>() {
+            @Override
+            public View buildView(LayoutInflater inflater, View view, MarkModel object) {
+                view = inflater.inflate(R.layout.ui_mark_mark_element, mListview, false);
+                addElement(view, object);
+                return view;
+            }
+        });
+        mListview.setAdapter(mListviewAdapter);
         new MarkAPI(EpitechAccount.getLogin()) {
             @Override
             public void onSuccess() {
                 for (int i = 0; i < getMarks().size(); i++) {
-                    addElement(getMarks().get(i));
+                    mListviewAdapter.add(getMarks().get(i));
                 }
+                mListviewAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -60,14 +74,12 @@ public class MarkFragment extends UiFragment {
         return rootView;
     }
 
-    private void addElement(MarkModel mark) {
-        LayoutInflater inflater = (LayoutInflater) getActivity().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View elementView = inflater.inflate(R.layout.ui_mark_mark_element, mLinearListview, false);
-        ((TextView) elementView.findViewById(R.id.ui_mark_mark_element_mark)).setText(String.valueOf(mark.getNote()));
-        ((TextView) elementView.findViewById(R.id.ui_mark_mark_element_title)).setText(mark.getTitle());
-        final TextView commentView = (TextView) elementView.findViewById(R.id.ui_mark_mark_element_comment);
+    private void addElement(View view, MarkModel mark) {
+        ((TextView) view.findViewById(R.id.ui_mark_mark_element_mark)).setText(String.valueOf(mark.getNote()));
+        ((TextView) view.findViewById(R.id.ui_mark_mark_element_title)).setText(mark.getTitle());
+        final TextView commentView = (TextView) view.findViewById(R.id.ui_mark_mark_element_comment);
         commentView.setText(mark.getComment());
-        elementView.setOnClickListener(new OnClickListener() {
+        view.setOnClickListener(new OnClickListener() {
             @SuppressLint("NewApi")
             @Override
             public void onClick(View v) {
@@ -80,7 +92,6 @@ public class MarkFragment extends UiFragment {
                 }
             }
         });
-        mLinearListview.addView(elementView);
     }
 
     @Override

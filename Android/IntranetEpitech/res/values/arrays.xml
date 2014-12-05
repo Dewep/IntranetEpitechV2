@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="serviceFrequency">
+        <item name="2">Toutes les 2 heures</item>
+        <item name="3">Toutes les 3 heures</item>
+        <item name="6">Toutes les 6 heures</item>
+        <item name="12">Toutes les 12 heures</item>
+    </string-array>
+    <string-array name="serviceFrequencyValues">
+        <item name="2">2</item>
+        <item name="3">3</item>
+        <item name="6">6</item>
+        <item name="12">12</item>
+    </string-array>
+
+</resources>

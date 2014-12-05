@@ -34,6 +34,7 @@ public class SettingFragment extends UiFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.ui_setting_fragment, container, false);
+        getActivity().getFragmentManager().beginTransaction().replace(R.id.ui_setting_container, new SettingAndroidFragment()).commit();
         return rootView;
     }
 

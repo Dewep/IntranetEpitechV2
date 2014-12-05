@@ -4,18 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <FrameLayout
-        android:id="@+id/ui_drawerlayout_content"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
         <include layout="@layout/ui_toolbar" />
-    </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/ui_drawerlayout_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
 
     <fragment
         android:id="@+id/ui_drawerlayout_navigation"
         android:name="net.dewep.intranetepitech.ui.NavigationFragment"
-        android:layout_width="320dp"
+        android:layout_width="@dimen/ui_drawerlayout_navigation_width"
         android:layout_height="match_parent"
         android:layout_gravity="start" />
 

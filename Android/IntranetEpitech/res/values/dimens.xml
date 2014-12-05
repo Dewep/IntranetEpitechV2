@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="ui_first_column">60dp</dimen>
+
+    <dimen name="ui_drawerlayout_navigation_width">320dp</dimen>
+
+</resources>
