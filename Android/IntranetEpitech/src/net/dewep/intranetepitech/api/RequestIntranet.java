@@ -67,10 +67,14 @@ public abstract class RequestIntranet extends APIRequest {
     @Override
     public void onResult() {
         if (response.getCode() == HttpStatus.SC_OK) {
+            onPreSuccess();
             onSuccess();
         } else {
             onError();
         }
+    }
+
+    public void onPreSuccess() {
     }
 
     public abstract void onSuccess();

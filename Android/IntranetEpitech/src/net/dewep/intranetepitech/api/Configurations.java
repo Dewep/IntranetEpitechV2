@@ -43,8 +43,8 @@ public final class Configurations {
         return "/";
     }
 
-    public static String getPathDashboard() {
-        return "/";
+    public static String getPathMark(String login) {
+        return "/user/" + login + "/notes/";
     }
 
 }
