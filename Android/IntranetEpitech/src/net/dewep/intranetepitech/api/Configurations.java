@@ -47,6 +47,10 @@ public final class Configurations {
         return "/user/" + login + "/notes/";
     }
 
+    public static String getPathCalendar() {
+        return "/planning/load";
+    }
+
     public static String getUrlProfilPicture(String login) {
         return "https://cdn.local.epitech.eu/userprofil/profilview/" + login + ".jpg";
     }

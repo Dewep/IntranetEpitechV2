@@ -18,6 +18,7 @@
 package net.dewep.intranetepitech.api;
 
 import org.apache.http.HttpStatus;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import fr.qinder.api.APIRequest;
@@ -32,7 +33,8 @@ import fr.qinder.tools.JSON;
 public abstract class RequestIntranet extends APIRequest {
 
     private Boolean mWithJson = true;
-    private JSONObject mJson = null;
+    private JSONObject mJsonObject = null;
+    private JSONArray mJsonArray = null;
 
     public RequestIntranet(String url, Boolean withJson) {
         super(Configurations.getHost() + url);
@@ -43,8 +45,12 @@ public abstract class RequestIntranet extends APIRequest {
         super(Configurations.getFullHost() + url);
     }
 
-    public JSONObject getJSON() {
-        return mJson;
+    public JSONObject getJSONObject() {
+        return mJsonObject;
+    }
+
+    public JSONArray getJSONArray() {
+        return mJsonArray;
     }
 
     public void preExecute() {
@@ -60,7 +66,10 @@ public abstract class RequestIntranet extends APIRequest {
             response.setData(response.getData().substring(response.getData().indexOf('\n') + 1));
         }
         if (mWithJson) {
-            mJson = JSON.getObject(response.getData());
+            mJsonObject = JSON.getObject(response.getData());
+        }
+        if (mJsonObject == null) {
+            mJsonArray = JSON.getArray(response.getData());
         }
     }
 

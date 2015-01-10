@@ -32,7 +32,7 @@ public abstract class MarkAPI extends RequestIntranet {
 
     @Override
     public void onPreSuccess() {
-        JSONObject json = getJSON();
+        JSONObject json = getJSONObject();
         if (json != null) {
             try {
                 JSONArray marks = json.getJSONArray("notes");

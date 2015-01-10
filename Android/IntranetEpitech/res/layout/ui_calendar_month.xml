@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/UiFragment"
+    android:paddingBottom="10dp" >
+
+    <TextView
+        android:id="@+id/ui_calendar_month_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:paddingBottom="10dp"
+        android:paddingLeft="@dimen/ui_first_column"
+        android:paddingTop="10dp"
+        android:textColor="@color/white" />
+
+    <LinearLayout
+        android:id="@+id/ui_calendar_month_container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <!-- <include
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/ui_calendar_week" />
+
+        <include
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/ui_calendar_week" /> -->
+    </LinearLayout>
+
+</LinearLayout>

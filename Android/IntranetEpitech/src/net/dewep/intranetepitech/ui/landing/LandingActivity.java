@@ -217,7 +217,7 @@ public class LandingActivity extends FragmentActivity implements OnClickListener
             new LoginAPI(login, password) {
                 @Override
                 public void onSuccess() {
-                    LandingActivity.this.onSuccessLogin(getJSON());
+                    LandingActivity.this.onSuccessLogin(getJSONObject());
                 }
 
                 @Override

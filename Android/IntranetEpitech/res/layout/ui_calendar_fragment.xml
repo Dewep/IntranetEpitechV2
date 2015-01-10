@@ -3,17 +3,20 @@
     style="@style/UiFragment" >
 
     <LinearLayout
+        android:id="@+id/ui_calendar_container"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
         android:orientation="vertical" >
 
-        <TextView
-            android:layout_width="wrap_content"
+        <!-- <include
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/navigation_calendar" />
+            layout="@layout/ui_calendar_month" />
+
+        <include
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/ui_calendar_month" /> -->
     </LinearLayout>
 
 </ScrollView>

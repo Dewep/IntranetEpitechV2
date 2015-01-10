@@ -43,4 +43,7 @@
     <string name="landing_provide_password">Merci de renseigner le mot de passe.</string>
     <string name="landing_bad_identity">Mauvais identifiants.</string>
 
+    <!-- Calendar -->
+    <string name="calendar_week_title">Semaine du %1$s au %2$s</string>
+
 </resources>

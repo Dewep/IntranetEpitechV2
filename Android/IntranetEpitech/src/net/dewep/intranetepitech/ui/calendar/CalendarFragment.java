@@ -16,12 +16,20 @@
  */
 package net.dewep.intranetepitech.ui.calendar;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.List;
+
 import net.dewep.intranetepitech.R;
+import net.dewep.intranetepitech.api.model.EventModel;
+import net.dewep.intranetepitech.api.request.CalendarAPI;
 import net.dewep.intranetepitech.ui.UiFragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 /**
  * TODO: Comments this class
@@ -30,10 +38,36 @@ import android.view.ViewGroup;
  * @author Colin Julien
  */
 public class CalendarFragment extends UiFragment {
+    private Calendar mDateStart;
+    private Calendar mDateEnd;
+    private ManageCalendar mCalendar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.ui_calendar_fragment, container, false);
+        mDateStart = GregorianCalendar.getInstance();
+        mDateStart.add(Calendar.DAY_OF_YEAR, -7);
+        mDateEnd = GregorianCalendar.getInstance();
+        mDateEnd.add(Calendar.DAY_OF_YEAR, 30);
+        mCalendar = new ManageCalendar(inflater, (LinearLayout) rootView.findViewById(R.id.ui_calendar_container));
+        Log.d("toto", "wait");
+        new CalendarAPI(mDateStart, mDateEnd) {
+            @Override
+            public void onSuccess() {
+                Log.d("toto", "success");
+                List<EventModel> events = getRegisteredEvents();
+                for (int i = 0; i < events.size(); i++) {
+                    EventModel e = events.get(i);
+                    mCalendar.addEvent(e);
+                }
+                mCalendar.refreshFiltering();
+            }
+
+            @Override
+            public void onError() {
+                Log.d("toto", response.getData());
+            }
+        };
         return rootView;
     }
 
