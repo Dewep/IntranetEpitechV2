@@ -13,55 +13,55 @@ import fr.qinder.tools.ConvertDate;
 import fr.qinder.tools.JSON;
 
 public class EventModel {
-    private JSONObject mObject;
+    protected JSONObject mObject;
 
     // All
-    private String mType = null;
-    private String mLocation = null;
-    private String mLocationType = null;
-    private String mRoom = null;
-    private String mTitle = null;
-    private Boolean mIsRegistered = false;
-    private int mNumberRegistered = 0;
-    private int mNumberPlace = 0;
-    private String mDateStart = null;
-    private String mDateEnd = null;
-    private String mDuration = null;
-    private List<String> mRights = new ArrayList<String>();
+    protected String mType = "";
+    protected String mLocation = "";
+    protected String mLocationType = "";
+    protected String mRoom = "";
+    protected String mTitle = "";
+    protected Boolean mIsRegistered = false;
+    protected int mNumberRegistered = 0;
+    protected int mNumberPlace = 0;
+    protected String mDateStart = "";
+    protected String mDateEnd = "";
+    protected String mDuration = "";
+    protected List<String> mRights = new ArrayList<String>();
 
     // General
-    private int mGeneralScolarYear = 0;
-    private String mGeneralCodeModule = null;
-    private String mGeneralCodeInstance = null;
-    private String mGeneralCodeActivity = null;
-    private String mGeneralCodeEvent = null;
-    private int mGeneralSemester = 0;
-    private String mGeneralTitleModule = null;
-    private String mGeneralTypeTitle = null;
-    private String mGeneralTypeCode = null;
-    private Boolean mGeneralIsRdv = false;
-    private Boolean mGeneralIsModuleAvailable = false;
-    private Boolean mGeneralIsModuleRegistered = false;
-    private Boolean mGeneralIsAllowRegistered = false;
-    private Boolean mGeneralIsProject = false;
-    private Boolean mGeneralIsAllowToken = false;
-    private Boolean mGeneralIsRegisterStudent = false;
-    private String mGeneralEventRegistered = null;
-    private String mGeneralRdvGroupRegistered = null;
-    private String mGeneralRdvIndivRegistered = null;
+    protected int mGeneralScolarYear = 0;
+    protected String mGeneralCodeModule = "";
+    protected String mGeneralCodeInstance = "";
+    protected String mGeneralCodeActivity = "";
+    protected String mGeneralCodeEvent = "";
+    protected int mGeneralSemester = 0;
+    protected String mGeneralTitleModule = "";
+    protected String mGeneralTypeTitle = "";
+    protected String mGeneralTypeCode = "";
+    protected Boolean mGeneralIsRdv = false;
+    protected Boolean mGeneralIsModuleAvailable = false;
+    protected Boolean mGeneralIsModuleRegistered = false;
+    protected Boolean mGeneralIsAllowRegistered = false;
+    protected Boolean mGeneralIsProject = false;
+    protected Boolean mGeneralIsAllowToken = false;
+    protected Boolean mGeneralIsRegisterStudent = false;
+    protected String mGeneralEventRegistered = "";
+    protected String mGeneralRdvGroupRegistered = "";
+    protected String mGeneralRdvIndivRegistered = "";
 
     // Perso calendar
-    private int mPersoId = 0;
-    private int mPersoIdCalendar = 0;
-    private String mPersoType = null;
-    private String mPersoDescription = null;
-    private String mPersoColor = null;
-    private String mPersoMakerLogin = null;
-    private String mPersoMakerTitle = null;
+    protected int mPersoId = 0;
+    protected int mPersoIdCalendar = 0;
+    protected String mPersoType = "";
+    protected String mPersoDescription = "";
+    protected String mPersoColor = "";
+    protected String mPersoMakerLogin = "";
+    protected String mPersoMakerTitle = "";
 
     // Calendar
-    private Calendar mCalendarStart = null;
-    private Calendar mCalendarEnd = null;
+    protected Calendar mCalendarStart = null;
+    protected Calendar mCalendarEnd = null;
 
     public EventModel(JSONObject object) {
         mObject = object;

@@ -1,22 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<fr.qinder.layout.ScrollViewEvent xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ui_calendar_scrollviewevent"
     style="@style/UiFragment" >
 
     <LinearLayout
-        android:id="@+id/ui_calendar_container"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <!-- <include
+        <LinearLayout
+            android:id="@+id/ui_calendar_slider_top"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            layout="@layout/ui_calendar_month" />
+            android:orientation="vertical"
+            android:padding="5dp" >
 
-        <include
+            <ProgressBar
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ui_calendar_container"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            layout="@layout/ui_calendar_month" /> -->
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ui_calendar_slider_bot"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp" >
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+        </LinearLayout>
     </LinearLayout>
 
-</ScrollView>
+</fr.qinder.layout.ScrollViewEvent>

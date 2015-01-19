@@ -55,6 +55,7 @@ public class LandingLoginFragment extends LandingFragment implements OnClickList
         landingLoginConnect.setOnClickListener(this);
 
         mLandingLoginPassword.setOnEditorActionListener(this);
+        mLandingLoginPassword.setText(EpitechAccount.getPassword());
 
         this.updateFragmentData();
 

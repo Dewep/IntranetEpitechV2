@@ -19,7 +19,7 @@ public class MonthsCalendar extends GenericCalendar {
     public MonthsCalendar(LayoutInflater inflater, LinearLayout parent, int index, EventModel event) {
         mInflater = inflater;
         mView = mInflater.inflate(R.layout.ui_calendar_month, parent, false);
-        ((TextView) mView.findViewById(R.id.ui_calendar_month_title)).setText(ConvertDate.formatDefault("MMMM yy").format(event.getCalendarStart().getTime()));
+        ((TextView) mView.findViewById(R.id.ui_calendar_month_title)).setText(ConvertDate.formatDefault("MMMM yyyy").format(event.getCalendarStart().getTime()));
         parent.addView(mView, index);
     }
 

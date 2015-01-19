@@ -20,6 +20,9 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import fr.qinder.layout.ScrollViewEvent;
+import fr.qinder.layout.ScrollViewEventListener;
+
 import net.dewep.intranetepitech.R;
 import net.dewep.intranetepitech.api.model.EventModel;
 import net.dewep.intranetepitech.api.request.CalendarAPI;
@@ -41,34 +44,93 @@ public class CalendarFragment extends UiFragment {
     private Calendar mDateStart;
     private Calendar mDateEnd;
     private ManageCalendar mCalendar;
+    private View mSliderTop;
+    private View mSliderBot;
+    private Boolean isLoad = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.ui_calendar_fragment, container, false);
+        mSliderTop = rootView.findViewById(R.id.ui_calendar_slider_top);
+        mSliderBot = rootView.findViewById(R.id.ui_calendar_slider_bot);
+        setSliderTop(false);
+        setSliderBot(false);
         mDateStart = GregorianCalendar.getInstance();
-        mDateStart.add(Calendar.DAY_OF_YEAR, -7);
+        mDateStart.add(Calendar.DAY_OF_YEAR, -4);
         mDateEnd = GregorianCalendar.getInstance();
         mDateEnd.add(Calendar.DAY_OF_YEAR, 30);
         mCalendar = new ManageCalendar(inflater, (LinearLayout) rootView.findViewById(R.id.ui_calendar_container));
-        Log.d("toto", "wait");
-        new CalendarAPI(mDateStart, mDateEnd) {
+        loadEvents(mDateStart, mDateEnd, true, true);
+        ((ScrollViewEvent) rootView.findViewById(R.id.ui_calendar_scrollviewevent)).setScrollViewListener(new ScrollViewEventListener() {
+            @Override
+            public void onTop(ScrollViewEvent scrollView) {
+                if (!isLoad) {
+                    Calendar end = (Calendar) mDateStart.clone();
+                    end.add(Calendar.DAY_OF_YEAR, -1);
+                    mDateStart.add(Calendar.DAY_OF_YEAR, -7);
+                    loadEvents(mDateStart, end, true, false);
+                }
+            }
+
+            @Override
+            public void onScrollChanged(ScrollViewEvent scrollView, int x, int y, int oldx, int oldy) {
+            }
+
+            @Override
+            public void onBot(ScrollViewEvent scrollView) {
+                if (!isLoad) {
+                    Calendar start = (Calendar) mDateEnd.clone();
+                    start.add(Calendar.DAY_OF_YEAR, +1);
+                    mDateEnd.add(Calendar.DAY_OF_YEAR, +7);
+                    loadEvents(start, mDateEnd, false, true);
+                }
+            }
+        });
+        return rootView;
+    }
+
+    private void setSliderTop(Boolean state) {
+        mSliderTop.setVisibility(state ? View.VISIBLE : View.GONE);
+    }
+
+    private void setSliderBot(Boolean state) {
+        mSliderBot.setVisibility(state ? View.VISIBLE : View.GONE);
+    }
+
+    private void loadEvents(Calendar start, Calendar end, final Boolean sliderTop, final Boolean sliderBot) {
+        isLoad = true;
+        if (sliderTop && sliderBot) {
+            setSliderTop(true);
+        } else if (sliderTop) {
+            setSliderTop(true);
+        } else if (sliderBot) {
+            setSliderBot(true);
+        }
+        new CalendarAPI(start, end) {
             @Override
             public void onSuccess() {
-                Log.d("toto", "success");
-                List<EventModel> events = getRegisteredEvents();
+                List<EventModel> events = getEvents();
                 for (int i = 0; i < events.size(); i++) {
                     EventModel e = events.get(i);
                     mCalendar.addEvent(e);
                 }
+                if (sliderTop && sliderBot) {
+                    mCalendar.addEvent(new TodayEventModel());
+                }
                 mCalendar.refreshFiltering();
+                setSliderTop(false);
+                setSliderBot(false);
+                isLoad = false;
             }
 
             @Override
             public void onError() {
-                Log.d("toto", response.getData());
+                Log.d("ERROR LOAD EVENTS", response.getData());
+                setSliderTop(false);
+                setSliderBot(false);
+                isLoad = false;
             }
         };
-        return rootView;
     }
 
     @Override
