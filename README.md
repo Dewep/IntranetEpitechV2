@@ -1,7 +1,9 @@
 IntranetEpitechV2
 =================
 
-Intranet Epitech V2
+Refonte de l'application Intranet Epitech (<https://github.com/Dewep/IntranetEpitech>).
+
+Application non terminée.
 
 Authors
 =======
